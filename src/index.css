@@ -1,0 +1,26 @@
+@import url('/fonts.css');
+@import url('./tooltip.css');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  width: 100vw;
+  height: 100vh;
+}
+
+html {
+  font-size: 10px;
+}
+body {
+  /* font-family: roboto; */
+  font-size: 1.2rem;
+  font-weight: lighter;
+}
+h1 {
+  font-size: 1.8rem;
+}

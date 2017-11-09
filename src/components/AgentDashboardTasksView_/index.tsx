@@ -3,9 +3,8 @@ import * as Theme from './Theme'
 import styled, { ThemeProvider } from 'styled-components';
 import * as Task from '../../types/Task'
 import * as TaskBasics from '../../types/TaskBasics'
-//import TasksList from '../../components/TasksList';
+import TasksList from '../../components/TasksList';
 import ControlStrip from '../AgentDashboardControlStrip'
-import TestTable from './table_test'
 
 export interface AgentDashboardTasksProps extends React.Props<AgentDashboardTasks> {
   tasks: Task.Task[],
@@ -78,7 +77,7 @@ class AgentDashboardTasks extends React.Component<AgentDashboardTasksProps, Agen
   }
 
   render() {
-    //const tasks = this.props.tasks.slice(0, 50);
+    const tasks = this.props.tasks.slice(0, 50);
 
     return (
       <ThemeProvider theme={this.props.theme}>
@@ -96,18 +95,17 @@ class AgentDashboardTasks extends React.Component<AgentDashboardTasksProps, Agen
             theme={this.props.theme.controlStrip}
           />
           <MainPartWrap>
-            <TestTable/>
-            {/*<TasksList*/}
-              {/*data={tasks}*/}
-              {/*theme={this.props.theme.tasksList}*/}
-              {/*checkedRows={this.state.selectedTasks}*/}
-              {/*onTaskCheck={this.onTaskCheck}*/}
-              {/*onAbortTask={this.props.onAbortTask}*/}
-              {/*headerStatus={{startTimestamp: 'desc'}}*/}
-              {/*onHeaderClick={() => {*/}
-                {/*// TODO: implement*/}
-              {/*}}*/}
-            {/*/>*/}
+            <TasksList
+              data={tasks}
+              theme={this.props.theme.tasksList}
+              checkedRows={this.state.selectedTasks}
+              onTaskCheck={this.onTaskCheck}
+              onAbortTask={this.props.onAbortTask}
+              headerStatus={{startTimestamp: 'desc'}}
+              onHeaderClick={() => {
+                // TODO: implement
+              }}
+            />
           </MainPartWrap>
         </Root>
       </ThemeProvider>

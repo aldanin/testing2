@@ -239,10 +239,10 @@ const getDuration = (status: Tasks.TaskStatus) => {
 
 export const TASKS: Tasks.Task[] = [];
 ////////////////////////////////
-// Create tasks for each agent:
+// Create tasks for each employee:
 ///////////////////////////////
 
-const createTasksByAgent = (agent: Agents.AgentData, slotDate: number) => {
+const createTasksByAgent = (employee: Agents.AgentData, slotDate: number) => {
   const tasks: Tasks.Task[] = [];
 
   const service = CommonFunctions.createServiceType();
@@ -264,7 +264,7 @@ const createTasksByAgent = (agent: Agents.AgentData, slotDate: number) => {
     const task = {
       id,
       name,
-      agent,
+      employee,
       service,
       subServices,
       proxy,
@@ -287,7 +287,7 @@ const createTasksByAgent = (agent: Agents.AgentData, slotDate: number) => {
   return tasks;
 }
 
-const createAgentTasks = (agent: Agents.AgentData) => {
+const createAgentTasks = (employee: Agents.AgentData) => {
   const firstDateEver = moment().subtract(3, 'months').valueOf(); // Start - 3 months ago
   const lastDate = moment().add(2, 'months').valueOf() // End - 3 months from now
   const nextTimeSlot = (date: number) => moment(date).add(6, 'hours').valueOf(); // Get the next time slot
@@ -295,7 +295,7 @@ const createAgentTasks = (agent: Agents.AgentData) => {
   let tasks: Tasks.Task[] = [];
 
   for (let slotDate: number = firstDateEver; slotDate < lastDate; slotDate = nextTimeSlot(slotDate)) {
-    tasks = tasks.concat(createTasksByAgent(agent, slotDate));
+    tasks = tasks.concat(createTasksByAgent(employee, slotDate));
   }
 
   return tasks;
@@ -310,11 +310,11 @@ interface AgentContainer {
 
 const AGENT_CONTAINERS: AgentContainer[] = [];
 
-AgentMock.AGENTS.forEach(agent => {
-  const tasks = createAgentTasks(agent);
+AgentMock.EMPLOYEES.forEach(employee => {
+  const tasks = createAgentTasks(employee);
 
   AGENT_CONTAINERS.push({
-    employeeId: agent.id,
+    employeeId: employee.id,
     tasks: tasks,
   })
 })

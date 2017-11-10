@@ -1,6 +1,6 @@
 import * as TasksListTheme from '../TasksList/Theme'
 import * as TaskStatusTheme from '../../appWidgets/GenericColorThemes/TaskStatusColors'
-import * as AgentDashboardControlStripTheme from '../DashboardControlStrip/Theme'
+import * as DashboardControlStripTheme from '../DashboardControlStrip/Theme'
 
 export const CARD_DEFAULT_BG_COLOR = 'white';
 
@@ -17,7 +17,7 @@ export interface ThemeProps {
     textColorPale: string,
     borderColor: string,
   },
-  controlStrip: AgentDashboardControlStripTheme.ThemeProps,
+  controlStrip: DashboardControlStripTheme.ThemeProps,
   tasksList: TasksListTheme.ThemeProps,
   taskStatusColors: TaskStatusTheme.TaskStatusColorsTheme,
 }
@@ -29,7 +29,7 @@ export const DEFAULT_THEME: ThemeProps = {
     textColor: '#263238',
     borderColor: '#E9EDF6',
   },
-  controlStrip: AgentDashboardControlStripTheme.DEFAULT_THEME,
+  controlStrip: DashboardControlStripTheme.DEFAULT_THEME,
   tasksList: TasksListTheme.DEFAULT_THEME,
   taskStatusColors: TaskStatusTheme.TASK_STATUS_COLORS_DEFAULT_THEME,
 };

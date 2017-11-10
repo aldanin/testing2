@@ -8,9 +8,9 @@ import { tabstrip } from './TabStrip'
 import { graphicTimeline } from './GraphicTimeline'
 import { taskStatusColors } from './TaskStatusColors'
 import { statusCard } from './StatusCard'
-import { agentDashboardSummaryView } from './DashboardSummary'
-import {agentDashboardTasksView} from './DashboardTasks'
-import {agentDashboardCalendarView} from './DashboardCalendar'
+import { dashboardSummaryView } from './DashboardSummary'
+import {dashboardTasksView} from './DashboardTasks'
+import {dashboardCalendarView} from './DashboardCalendar'
 
 
 export const dashboardPage = {
@@ -18,9 +18,9 @@ export const dashboardPage = {
   layoutBGColor: BACKGROUND_COLORS.B01,
   commonBorderColor: TEXT_COLORS.T09,
   genericTextColors: genericTextColors,
-  summaryView: agentDashboardSummaryView,
-  tasksView: agentDashboardTasksView,
-  calendarView: agentDashboardCalendarView,
+  summaryView: dashboardSummaryView,
+  tasksView: dashboardTasksView,
+  calendarView: dashboardCalendarView,
   mainTabstrip: tabstrip,
   roundedCard: roundedCardBase,
   statusCard: statusCard,

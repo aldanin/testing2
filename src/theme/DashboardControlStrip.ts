@@ -3,7 +3,7 @@ import {
 } from './constants'
 import { selectorTabsTheme } from './DashboardTabsGenericTheme'
 
-export const agentDashboardControlStrip = {
+export const dashboardControlStrip = {
   BGColor: BACKGROUND_COLORS.B02,
   selectorTabs: selectorTabsTheme,
   captionColor: '#9FA1A2'

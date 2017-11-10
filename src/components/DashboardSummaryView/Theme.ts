@@ -3,11 +3,11 @@ import * as GraphicTimeline from '../../appWidgets/GraphicTimeline/Theme'
 import * as TaskBarChartTheme from '../../appWidgets/TasksBarChart/Theme'
 import * as TaskStatusTheme from '../../appWidgets/GenericColorThemes/TaskStatusColors'
 import * as GenericTextColors from '../../appWidgets/GenericColorThemes/GenericTextColors'
-import * as AgentDashboardControlStripTheme from '../DashboardControlStrip/Theme'
+import * as DashboardControlStripTheme from '../DashboardControlStrip/Theme'
 
 export interface ThemeProps {
   genericTextColors: GenericTextColors.GenericTextColorsTheme,
-  controlStrip: AgentDashboardControlStripTheme.ThemeProps,
+  controlStrip: DashboardControlStripTheme.ThemeProps,
   roundedCard: RoundedCardTheme.RoundedCardThemeProps,
   graphicTimeline: GraphicTimeline.GraphicTimelineThemeProps,
   taskStatusColors: TaskStatusTheme.TaskStatusColorsTheme,
@@ -16,7 +16,7 @@ export interface ThemeProps {
 
 export const DEFAULT_THEME: ThemeProps = {
   genericTextColors: GenericTextColors.THEME_DEFAULT,
-  controlStrip: AgentDashboardControlStripTheme.DEFAULT_THEME,
+  controlStrip: DashboardControlStripTheme.DEFAULT_THEME,
   graphicTimeline: GraphicTimeline.DEFAULT_THEME,
   roundedCard: RoundedCardTheme.DEFAULT_THEME,
   taskStatusColors: TaskStatusTheme.TASK_STATUS_COLORS_DEFAULT_THEME,

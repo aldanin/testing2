@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import Link from '../components/Header/Link'
 import NotificationsDrawer from '../components/Header/NotificationsDrawer'
 import UserLinksConnector from '../containers/UserLinksConnector'
-import AgentDashboardContent from '../containers/DashboardContent'
+import DashboardContent from '../containers/DashboardContent'
 import { ToolbarGroup } from 'material-ui/Toolbar'
 import ActionHome from 'material-ui/svg-icons/action/home'
 import { Header as HeaderTheme } from '../theme/'
@@ -14,7 +14,7 @@ const Label = styled.span`
   color: ${(props) => props.theme.highlightColor};
 `
 
-interface AgentDashboardProps {
+interface DashboardProps {
 }
 
 const renderHeader = () => {
@@ -38,13 +38,13 @@ const renderHeader = () => {
   )
 }
 
-const AgentDashboard: React.SFC<AgentDashboardProps> = () => {
+const Dashboard: React.SFC<DashboardProps> = () => {
   return (
     <DefaultLayout
       header={renderHeader()}
-      main={<AgentDashboardContent/>}
+      main={<DashboardContent/>}
     />
   )
 }
 
-export default AgentDashboard
+export default Dashboard

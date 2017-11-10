@@ -1,7 +1,7 @@
 import * as TabstripComponentTheme from '../../appWidgets/TabstripComponent/Theme'
 import * as DashboardSummaryViewTheme from '../DashboardSummaryView/Theme'
-import * as AgentDashboardTasksViewTheme from '../DashboardTasksView/Theme'
-import * as AgentDashboardCalendarViewTheme from '../DashboardCalendarView/Theme'
+import * as DashboardTasksViewTheme from '../DashboardTasksView/Theme'
+import * as DashboardCalendarViewTheme from '../DashboardCalendarView/Theme'
 import * as StatusCardTheme from '../../appWidgets/StatusCard/Theme'
 import * as WidgetThemes from '../../appWidgets/GenericColorThemes/TaskStatusColors'
 
@@ -18,8 +18,8 @@ export interface ThemeProps {
 
   mainTabstrip: TabstripComponentTheme.TabsThemeProps,
   summaryView: DashboardSummaryViewTheme.ThemeProps,
-  tasksView: AgentDashboardTasksViewTheme.ThemeProps,
-  calendarView: AgentDashboardCalendarViewTheme.ThemeProps,
+  tasksView: DashboardTasksViewTheme.ThemeProps,
+  calendarView: DashboardCalendarViewTheme.ThemeProps,
   statusCard: StatusCardTheme.StatusCardThemeProps,
   taskStatusColors: WidgetThemes.TaskStatusColorsTheme
 }
@@ -36,8 +36,8 @@ export const DEFAULT_THEME: ThemeProps = {
   },
   mainTabstrip: TabstripComponentTheme.DEFAULT_THEME,
   summaryView: DashboardSummaryViewTheme.DEFAULT_THEME,
-  tasksView: AgentDashboardTasksViewTheme.DEFAULT_THEME,
-  calendarView: AgentDashboardCalendarViewTheme.DEFAULT_THEME,
+  tasksView: DashboardTasksViewTheme.DEFAULT_THEME,
+  calendarView: DashboardCalendarViewTheme.DEFAULT_THEME,
   statusCard: StatusCardTheme.DEFAULT_THEME,
   taskStatusColors: WidgetThemes.TASK_STATUS_COLORS_DEFAULT_THEME
 };

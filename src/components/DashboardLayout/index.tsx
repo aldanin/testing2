@@ -5,21 +5,21 @@ import { ThemeProvider } from 'styled-components'
 import * as EmployeeSummary from '../../types/EmployeeSummary'
 import StatusCard from '../../appWidgets/StatusCard'
 import DashboardSummaryView from '../DashboardSummaryView'
-import AgentDashboardTasksView from '../DashboardTasksView'
-import AgentDashboardCalendarView from '../DashboardCalendarView'
+import DashboardTasksView from '../DashboardTasksView'
+import DashboardCalendarView from '../DashboardCalendarView'
 import * as Task from '../../types/Task'
 import * as TaskBasics from '../../types/TaskBasics'
 import * as moment from 'moment'
 import TabstripComponent from '../../appWidgets/TabstripComponent'
 
-export interface AgentDashboardProps extends React.Props<AgentDashboard> {
-  agentSummary: EmployeeSummary.EmployeeSummary
+export interface DashboardProps extends React.Props<Dashboard> {
+  employeeSummay: EmployeeSummary.EmployeeSummary
   tasks: Task.Task[],
   onAbortTask: (taskId:string) => void,
   theme?: Theme.ThemeProps;
 }
 
-export interface AgentDashboardState {
+export interface DashboardState {
   selectedTabIndex: number,
   currentDisplayDatesSpanFactor: number,
 }
@@ -91,16 +91,16 @@ const TimeSlotValue = styled.span`
   color: white;
 `;
 
-class AgentDashboard extends React.Component<AgentDashboardProps, AgentDashboardState> {
-  static defaultProps: Partial<AgentDashboardProps> = {
-    agentSummary: EmployeeSummary.DEFAULT_AGENT_SUMMARY,
+class Dashboard extends React.Component<DashboardProps, DashboardState> {
+  static defaultProps: Partial<DashboardProps> = {
+    employeeSummay: EmployeeSummary.DEFAULT_AGENT_SUMMARY,
     theme: Theme.DEFAULT_THEME,
   };
 
   private lastId: number;
   private pageSize: number;
 
-  constructor(props: AgentDashboardProps) {
+  constructor(props: DashboardProps) {
 
     super(props);
 
@@ -160,14 +160,14 @@ class AgentDashboard extends React.Component<AgentDashboardProps, AgentDashboard
         </ViewWrap>
       ),
       <ViewWrap key={2}>
-        <AgentDashboardCalendarView
+        <DashboardCalendarView
           tasks={this.props.tasks}
           theme={this.props.theme.calendarView}
         />
       </ViewWrap>,
       (
         <ViewWrap key={3}>
-          <AgentDashboardTasksView
+          <DashboardTasksView
             tasks={this.props.tasks}
             onAbortTask={this.props.onAbortTask}
             theme={this.props.theme.tasksView}
@@ -196,15 +196,15 @@ class AgentDashboard extends React.Component<AgentDashboardProps, AgentDashboard
   //
   // Render status cards in this page's top (header):
   //
-  renderStatusCards = (agentSummary: EmployeeSummary.EmployeeSummary) => {
+  renderStatusCards = (employeeSummay: EmployeeSummary.EmployeeSummary) => {
     return (
       <StatusCardContainer>
-        {this.renderStatusCard('aborted', agentSummary.aborted, 'Aborted')}
-        {this.renderStatusCard('failed', agentSummary.failed, 'Failed')}
-        {this.renderStatusCard('partial', agentSummary.partial, 'Partial')}
-        {this.renderStatusCard('completed', agentSummary.completed, 'Completed')}
-        {this.renderStatusCard('running', agentSummary.running, 'Running')}
-        {this.renderStatusCard('pending', agentSummary.pending, 'Pending')}
+        {this.renderStatusCard('aborted', employeeSummay.aborted, 'Aborted')}
+        {this.renderStatusCard('failed', employeeSummay.failed, 'Failed')}
+        {this.renderStatusCard('partial', employeeSummay.partial, 'Partial')}
+        {this.renderStatusCard('completed', employeeSummay.completed, 'Completed')}
+        {this.renderStatusCard('running', employeeSummay.running, 'Running')}
+        {this.renderStatusCard('pending', employeeSummay.pending, 'Pending')}
       </StatusCardContainer>
     )
   }
@@ -216,9 +216,9 @@ class AgentDashboard extends React.Component<AgentDashboardProps, AgentDashboard
           <DashboardHeader>
             <TimeSlotContainer>
               <TimeSlotCaption>Current time slot:</TimeSlotCaption>
-              <TimeSlotValue>{this.formatTimeSlot(this.props.agentSummary.timeSlot)}</TimeSlotValue>
+              <TimeSlotValue>{this.formatTimeSlot(this.props.employeeSummay.timeSlot)}</TimeSlotValue>
             </TimeSlotContainer>
-            {this.renderStatusCards(this.props.agentSummary)}
+            {this.renderStatusCards(this.props.employeeSummay)}
           </DashboardHeader>
           <DashboardLayout>
             <DashboardLayoutInner>
@@ -237,4 +237,4 @@ class AgentDashboard extends React.Component<AgentDashboardProps, AgentDashboard
   }
 }
 
-export default AgentDashboard;
+export default Dashboard;

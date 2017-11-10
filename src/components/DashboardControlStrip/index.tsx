@@ -7,7 +7,7 @@ import FiltersStrip from '../FiltersStripComponent'
 import * as TaskBasics from '../../types/TaskBasics'
 import * as Task from '../../types/Task'
 
-export interface AgentDashboardControlStripProps {
+export interface DashboardControlStripProps {
   onDisplaySelected: (timeSlot: TaskBasics.TimeSlotType, currentDisplayDatesSpanFactorInHours: number) => void,
   onServiceSelected: (service: Task.ServiceTypeFilter) => void,
   withViewSelector?: boolean,
@@ -57,7 +57,7 @@ const ControlStripCaption = styled.span`
   padding-right: 1.2rem;
 `;
 
-const getDisplaySelector = (props: AgentDashboardControlStripProps) => {
+const getDisplaySelector = (props: DashboardControlStripProps) => {
   const viewerModeTabs = [{
     title: 'Month',
     callback: () => props.onDisplaySelected('Month', moment().daysInMonth() * 24)
@@ -84,7 +84,7 @@ const getDisplaySelector = (props: AgentDashboardControlStripProps) => {
   )
 }
 
-const getServiceSelector = (props: AgentDashboardControlStripProps) => {
+const getServiceSelector = (props: DashboardControlStripProps) => {
   const viewerModeTabs = [{
     title: 'All',
     callback: () => props.onServiceSelected('All'),
@@ -110,8 +110,8 @@ const getServiceSelector = (props: AgentDashboardControlStripProps) => {
   )
 }
 
-const AgentDashboardControlStrip:
-  React.SFC<AgentDashboardControlStripProps> = (props: AgentDashboardControlStripProps) => {
+const DashboardControlStrip:
+  React.SFC<DashboardControlStripProps> = (props: DashboardControlStripProps) => {
   return (
     <ThemeProvider theme={props.theme}>
       <ControlStrip>
@@ -127,9 +127,9 @@ const AgentDashboardControlStrip:
   )
 }
 
-export default AgentDashboardControlStrip
+export default DashboardControlStrip
 
-AgentDashboardControlStrip.defaultProps = {
+DashboardControlStrip.defaultProps = {
   withViewSelector: true,
   theme: Theme.DEFAULT_THEME
 }

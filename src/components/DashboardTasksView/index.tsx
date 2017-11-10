@@ -7,13 +7,13 @@ import * as TaskBasics from '../../types/TaskBasics'
 import ControlStrip from '../DashboardControlStrip'
 import TestTable from './table_test'
 
-export interface AgentDashboardTasksProps extends React.Props<AgentDashboardTasks> {
+export interface DashboardTasksProps extends React.Props<DashboardTasks> {
   tasks: Task.Task[],
   onAbortTask: (taskId: string) => void;
   theme: Theme.ThemeProps;
 }
 
-export interface AgentDashboardTasksState {
+export interface DashboardTasksState {
   currentTimeSlotType: TaskBasics.TimeSlotType,
   currentDisplayDatesSpanFactorInHours: number,
   selectedTasks: string[];
@@ -32,15 +32,15 @@ const MainPartWrap = styled.div`
   overflow: auto; 
 `;
 
-class AgentDashboardTasks extends React.Component<AgentDashboardTasksProps, AgentDashboardTasksState> {
-  static defaultProps: Partial<AgentDashboardTasksProps> = {
+class DashboardTasks extends React.Component<DashboardTasksProps, DashboardTasksState> {
+  static defaultProps: Partial<DashboardTasksProps> = {
     theme: Theme.DEFAULT_THEME,
   };
 
   private lastId: number;
   private pageSize: number;
 
-  constructor(props: AgentDashboardTasksProps) {
+  constructor(props: DashboardTasksProps) {
 
     super(props);
 
@@ -115,4 +115,4 @@ class AgentDashboardTasks extends React.Component<AgentDashboardTasksProps, Agen
   }
 }
 
-export default AgentDashboardTasks;
+export default DashboardTasks;

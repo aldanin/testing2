@@ -1,21 +1,21 @@
 import * as React from 'react'
 import { connect } from 'react-redux';
-import AgentDashboardLayout from '../components/DashboardLayout'
+import DashboardLayout from '../components/DashboardLayout'
 import theme from '../theme/ScTheme'
 import * as EmployeeSummary from '../types/EmployeeSummary'
 import * as MockEmployeeSummary from '../mockData/EmployeeSummary'
 import * as MockTasks from '../mockData/Tasks'
 
-export interface AgentDashboardContentProps extends React.Props<AgentDashboardContent> {
-  agentSummary?: EmployeeSummary.EmployeeSummary,
+export interface DashboardContentProps extends React.Props<DashboardContent> {
+  employeeSummay?: EmployeeSummary.EmployeeSummary,
   onAbortTask: (taskId:string) => void;
 }
 
-class AgentDashboardContent extends React.Component<AgentDashboardContentProps, {}> {
+class DashboardContent extends React.Component<DashboardContentProps, {}> {
 
-  static defaultProps: Partial<AgentDashboardContentProps> = {}
+  static defaultProps: Partial<DashboardContentProps> = {}
 
-  constructor(props: AgentDashboardContentProps) {
+  constructor(props: DashboardContentProps) {
 
     super(props)
 
@@ -24,8 +24,8 @@ class AgentDashboardContent extends React.Component<AgentDashboardContentProps, 
 
   render() {
     return (
-      <AgentDashboardLayout
-        agentSummary={MockEmployeeSummary.getEmployeeSummary('3')}
+      <DashboardLayout
+        employeeSummay={MockEmployeeSummary.getEmployeeSummary('3')}
         tasks={MockTasks.getTasksByAgentId('3').slice(0, 1000)}
         onAbortTask={(id) => console.log('abort', id)}
         theme={theme.dashboardPage}
@@ -46,4 +46,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(AgentDashboardContent)
+)(DashboardContent)

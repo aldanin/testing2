@@ -16,7 +16,7 @@ const targetNames = [
   'Yoram the Hoodlum', // id = '2'
 ]
 
-const agentNames = [
+const employeeNames = [
   'xxx',
   'yyy',
   'zzz',
@@ -33,20 +33,17 @@ export const TARGETS = targetNames.map(name => {
   }
 })
 
-export const AGENTS: Agents.AgentData[] = [];
-//
-// Create agents for each target. First agent id for each target is target.
-// First agent id == '3':
-//
+export const EMPLOYEES: Agents.AgentData[] = [];
+
 TARGETS.forEach(target => {
   for (let i: number = 0; i < 5; i++) {
-    const agent = {
+    const employee = {
       id: getId(),
-      name: agentNames[randomInt(agentNames.length)],
+      name: employeeNames[randomInt(employeeNames.length)],
       targetId: target.id,
       targetName: target.name,
     }
 
-    AGENTS.push(agent);
+    EMPLOYEES.push(employee);
   }
 })

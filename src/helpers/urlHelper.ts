@@ -7,11 +7,11 @@ export const ViewPage = {
 const VIEW_INDEX = 2;
 
 export interface ParamsData {  // Params inject to page from Router or component wrapped withRouter
-  agent_id: string;
+  employee_id: string;
 }
 
 interface BuildUrlProps {
-  agent_id: string,
+  employee_id: string,
   viewPage: string;
   tab?: string;
   itemId?: string;
@@ -24,7 +24,7 @@ export function buildURL(props: BuildUrlProps) {
     // TODO: handle tab link
   }
 
-  return `/agent/${props.agent_id}/${props.viewPage}`;
+  return `/agent/${props.employee_id}/${props.viewPage}`;
 }
 
 export function getViewPageFromURL(location: Location) {

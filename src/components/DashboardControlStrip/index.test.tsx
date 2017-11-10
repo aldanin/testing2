@@ -4,16 +4,16 @@ import * as TaskBasics from '../../types/TaskBasics'
 import * as Task from '../../types/Task'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import AgentDashboardControlStrip from './index';
-import { AgentDashboardControlStripProps } from './index';
+import DashboardControlStrip from './index';
+import { DashboardControlStripProps } from './index';
 
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  const props: AgentDashboardControlStripProps = {
+  const props: DashboardControlStripProps = {
     onDisplaySelected: (timeSlot: TaskBasics.TimeSlotType, currentDisplayDatesSpanFactorInHours: number) => null,
     onServiceSelected: (service: Task.ServiceTypeFilter) => null,
   }
 
-  ReactDOM.render(<MuiThemeProvider><AgentDashboardControlStrip {...props}/></MuiThemeProvider>, div);
+  ReactDOM.render(<MuiThemeProvider><DashboardControlStrip {...props}/></MuiThemeProvider>, div);
 });

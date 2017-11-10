@@ -1,17 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import AgentDashboardCalendar from './';
-import { AgentDashboardCalendarProps } from './';
+import DashboardCalendar from './';
+import { DashboardCalendarProps } from './';
 import * as Theme from './Theme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  const props: AgentDashboardCalendarProps = {
+  const props: DashboardCalendarProps = {
     tasks: [],
     theme: Theme.DEFAULT_THEME,
   }
 
-  ReactDOM.render(<MuiThemeProvider><AgentDashboardCalendar {...props}/></MuiThemeProvider>, div);
+  ReactDOM.render(<MuiThemeProvider><DashboardCalendar {...props}/></MuiThemeProvider>, div);
 });

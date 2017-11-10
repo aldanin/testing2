@@ -3,14 +3,14 @@ import {
 } from './constants'
 import { roundedCardBase } from './RoundedCard'
 import { genericTextColors } from './GenericTextColors'
-import { agentDashboardControlStrip } from './DashboardControlStrip'
+import { dashboardControlStrip } from './DashboardControlStrip'
 import { graphicTimeline } from './GraphicTimeline'
 import { taskStatusColors } from './TaskStatusColors'
 import { dateChooserTheme } from './DateChooser'
 
-export const agentDashboardCalendarView = {
+export const dashboardCalendarView = {
   genericTextColors: genericTextColors,
-  controlStrip: agentDashboardControlStrip,
+  controlStrip: dashboardControlStrip,
   roundedCard: roundedCardBase,
   graphicTimeline: graphicTimeline,
   taskStatusColors: taskStatusColors,

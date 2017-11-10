@@ -2,7 +2,7 @@ import * as RoundedCardTheme from '../../appWidgets/RoundedCard/Theme'
 import * as GraphicTimeline from '../../appWidgets/GraphicTimeline/Theme'
 import * as TaskBarChartTheme from '../../appWidgets/TasksBarChart/Theme'
 import * as DateChooser from '../../appWidgets/DateChooser/Theme'
-import * as AgentDashboardControlStripTheme from '../DashboardControlStrip/Theme'
+import * as DashboardControlStripTheme from '../DashboardControlStrip/Theme'
 import * as TaskStatusTheme from '../../appWidgets/GenericColorThemes/TaskStatusColors'
 import * as GenericTextColors from '../../appWidgets/GenericColorThemes/GenericTextColors'
 
@@ -13,7 +13,7 @@ export interface ThemeProps {
     textColorPale: string,
     borderColor: string,
   },
-  controlStrip: AgentDashboardControlStripTheme.ThemeProps,
+  controlStrip: DashboardControlStripTheme.ThemeProps,
   dateChooser: DateChooser.ThemeProps,
   roundedCard: RoundedCardTheme.RoundedCardThemeProps,
   graphicTimeline: GraphicTimeline.GraphicTimelineThemeProps,
@@ -38,7 +38,7 @@ export const DEFAULT_THEME: ThemeProps = {
     borderColor: '#E9EDF6',
   },
   dateChooser: DateChooser.DEFAULT_THEME,
-  controlStrip: AgentDashboardControlStripTheme.DEFAULT_THEME,
+  controlStrip: DashboardControlStripTheme.DEFAULT_THEME,
   graphicTimeline: GraphicTimeline.DEFAULT_THEME,
   roundedCard: RoundedCardTheme.DEFAULT_THEME,
   taskStatusColors: TaskStatusTheme.TASK_STATUS_COLORS_DEFAULT_THEME,

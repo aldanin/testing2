@@ -5,11 +5,11 @@ import { roundedCardBase } from './RoundedCard'
 import { genericTextColors } from './GenericTextColors'
 import { graphicTimeline } from './GraphicTimeline'
 import { taskStatusColors } from './TaskStatusColors';
-import { agentDashboardControlStrip } from './DashboardControlStrip'
+import { dashboardControlStrip } from './DashboardControlStrip'
 
-export const agentDashboardSummaryView = {
+export const dashboardSummaryView = {
   genericTextColors: genericTextColors,
-  controlStrip: agentDashboardControlStrip,
+  controlStrip: dashboardControlStrip,
   roundedCard: roundedCardBase,
   graphicTimeline: graphicTimeline,
   taskStatusColors: taskStatusColors,

@@ -24,7 +24,7 @@ export const getEmployeeSummary = (employeeId: Agents.AgentId) => {
     rangeEnd: moment().startOf('day').subtract(0, 'days').add(12, 'hours').valueOf(),
   }
   const tasks = TasksMock.getTasksByAgentId(employeeId, timeSlot)
-  const agentSummary: EmployeeSummary.EmployeeSummary = {
+  const employeeSummay: EmployeeSummary.EmployeeSummary = {
     employeeId: employeeId,
     timeSlot: timeSlot,
     aborted: getTaskSummaryByFieldAndSlot(tasks, timeSlot, 'Aborted'),
@@ -37,7 +37,7 @@ export const getEmployeeSummary = (employeeId: Agents.AgentId) => {
     scheduled: getTaskSummaryByFieldAndSlot(tasks, timeSlot, 'Scheduled'),
   }
 
-  return agentSummary;
+  return employeeSummay;
 }
 
 // export const MOCK_AGENT_SUMMARY: EmployeeSummary.EmployeeSummary = {

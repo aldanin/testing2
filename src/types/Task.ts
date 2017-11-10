@@ -9,7 +9,7 @@ import * as TaskBasics from './TaskBasics'
 export interface Task {
   id: string;
   name: string;
-  agent: AgentData;
+  employee: AgentData;
   service: TaskBasics.ServiceType;
   subServices: GoogleSubServiceData | CloudSubServiceData;
   proxy: string;

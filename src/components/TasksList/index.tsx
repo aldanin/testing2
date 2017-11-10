@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as Theme from './Theme';
 import styled, { ThemeProvider } from 'styled-components';
 import * as Tasks from '../../types/Task';
-import AgentControlRowLayout from '../ControlRowLayout/index';
+import ControlRowLayout from '../ControlRowLayout/index';
 import TaskComponent from './TaskListItem';
 import { SortDirection } from '../../types/GeneralTypes'
 import SmartScroller from '../../appWidgets/SmartScroller'
@@ -184,7 +184,7 @@ class TasksList extends React.Component<TasksListProps, TasksListState> {
               {this.props.data.map((task, idx) => {
                 return (
                   <Row key={idx}>
-                    <AgentControlRowLayout
+                    <ControlRowLayout
                       component={(
                         <TaskComponent
                           data={task}

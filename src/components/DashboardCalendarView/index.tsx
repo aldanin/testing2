@@ -8,12 +8,12 @@ import ControlStrip from '../DashboardControlStrip'
 import DateChooser from '../../appWidgets/DateChooser'
 import * as moment from 'moment'
 
-export interface AgentDashboardCalendarProps extends React.Props<AgentDashboardCalendar> {
+export interface DashboardCalendarProps extends React.Props<DashboardCalendar> {
   tasks: Task.Task[],
   theme: Theme.ThemeProps;
 }
 
-export interface AgentDashboardCalendarState {
+export interface DashboardCalendarState {
   currentTimeSlotType: TaskBasics.TimeSlotType,
   currentDisplayDatesSpanFactorInHours: number,
   selectedTasks: string[];
@@ -124,15 +124,15 @@ const FuturePartValue = styled.span`
  
 `;
 
-class AgentDashboardCalendar extends React.Component<AgentDashboardCalendarProps, AgentDashboardCalendarState> {
-  static defaultProps: Partial<AgentDashboardCalendarProps> = {
+class DashboardCalendar extends React.Component<DashboardCalendarProps, DashboardCalendarState> {
+  static defaultProps: Partial<DashboardCalendarProps> = {
     theme: Theme.DEFAULT_THEME,
   };
 
   private lastId: number;
   private pageSize: number;
 
-  constructor(props: AgentDashboardCalendarProps) {
+  constructor(props: DashboardCalendarProps) {
 
     super(props);
 
@@ -306,4 +306,4 @@ class AgentDashboardCalendar extends React.Component<AgentDashboardCalendarProps
   }
 }
 
-export default AgentDashboardCalendar;
+export default DashboardCalendar;

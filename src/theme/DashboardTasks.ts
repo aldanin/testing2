@@ -3,11 +3,11 @@ import {
 import { genericTextColors } from './GenericTextColors'
 import { tasksList } from './TasksList'
 import { taskStatusColors } from './TaskStatusColors'
-import { agentDashboardControlStrip } from './DashboardControlStrip'
+import { dashboardControlStrip } from './DashboardControlStrip'
 
-export const agentDashboardTasksView = {
+export const dashboardTasksView = {
   genericTextColors: genericTextColors,
-  controlStrip: agentDashboardControlStrip,
+  controlStrip: dashboardControlStrip,
   tasksList: tasksList,
   taskStatusColors: taskStatusColors,
 }

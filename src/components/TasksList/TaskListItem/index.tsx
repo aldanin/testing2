@@ -174,16 +174,16 @@ class TaskListItem extends React.Component<TaskListItemProps, TaskListItemState>
           >{this.props.data.operation}
           </TextContainer>
           <TextContainer
-            title={this.props.data.agent.targetName}
+            title={this.props.data.employee.targetName}
             color={this.props.theme.textColors.textColor}
             width={'80px'}
-          >{this.props.data.agent.targetName}
+          >{this.props.data.employee.targetName}
           </TextContainer>
           <TextContainer
-            title={this.props.data.agent.name}
+            title={this.props.data.employee.name}
             color={this.props.theme.textColors.textColor}
             width={'140px'}
-          >{this.props.data.agent.name}
+          >{this.props.data.employee.name}
           </TextContainer>
           <TextContainer
             title={this.props.data.name}

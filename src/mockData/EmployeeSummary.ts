@@ -1,4 +1,4 @@
-import * as AgentSummary from '../types/EmployeeSummary'
+import * as EmployeeSummary from '../types/EmployeeSummary'
 import * as Agents from '../types/Emloyee'
 import * as Tasks from '../types/Task'
 import * as TasksMock from './Tasks'
@@ -18,14 +18,14 @@ const getTaskSummaryByFieldAndSlot = (tasks: Tasks.Task[],
 }
 
 /////////////////// Getters  ////////////
-export const getAgentSummary = (agentId: Agents.AgentId) => {
+export const getEmployeeSummary = (employeeId: Agents.AgentId) => {
   const timeSlot: TaskBasics.TimeSlotData = {
     rangeStart: moment().startOf('day').subtract(0, 'days').add(6, 'hours').valueOf(),
     rangeEnd: moment().startOf('day').subtract(0, 'days').add(12, 'hours').valueOf(),
   }
-  const tasks = TasksMock.getTasksByAgentId(agentId, timeSlot)
-  const agentSummary: AgentSummary.AgentSummary = {
-    agentId: agentId,
+  const tasks = TasksMock.getTasksByAgentId(employeeId, timeSlot)
+  const agentSummary: EmployeeSummary.EmployeeSummary = {
+    employeeId: employeeId,
     timeSlot: timeSlot,
     aborted: getTaskSummaryByFieldAndSlot(tasks, timeSlot, 'Aborted'),
     failed: getTaskSummaryByFieldAndSlot(tasks, timeSlot, 'Completed', 'Failed'),
@@ -40,8 +40,8 @@ export const getAgentSummary = (agentId: Agents.AgentId) => {
   return agentSummary;
 }
 
-// export const MOCK_AGENT_SUMMARY: AgentSummary.AgentSummary = {
-//   agentId: '10',
+// export const MOCK_AGENT_SUMMARY: EmployeeSummary.EmployeeSummary = {
+//   employeeId: '10',
 //   timeSlot: timeSlot,
 //   aborted: 0,
 //   failed: 4,

@@ -2,9 +2,9 @@ import * as React from 'react'
 import * as Theme from './Theme'
 import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components'
-import * as AgentSummary from '../../types/EmployeeSummary'
+import * as EmployeeSummary from '../../types/EmployeeSummary'
 import StatusCard from '../../appWidgets/StatusCard'
-import AgentDashboardSummaryView from '../DashboardSummaryView'
+import DashboardSummaryView from '../DashboardSummaryView'
 import AgentDashboardTasksView from '../DashboardTasksView'
 import AgentDashboardCalendarView from '../DashboardCalendarView'
 import * as Task from '../../types/Task'
@@ -13,7 +13,7 @@ import * as moment from 'moment'
 import TabstripComponent from '../../appWidgets/TabstripComponent'
 
 export interface AgentDashboardProps extends React.Props<AgentDashboard> {
-  agentSummary: AgentSummary.AgentSummary
+  agentSummary: EmployeeSummary.EmployeeSummary
   tasks: Task.Task[],
   onAbortTask: (taskId:string) => void,
   theme?: Theme.ThemeProps;
@@ -93,7 +93,7 @@ const TimeSlotValue = styled.span`
 
 class AgentDashboard extends React.Component<AgentDashboardProps, AgentDashboardState> {
   static defaultProps: Partial<AgentDashboardProps> = {
-    agentSummary: AgentSummary.DEFAULT_AGENT_SUMMARY,
+    agentSummary: EmployeeSummary.DEFAULT_AGENT_SUMMARY,
     theme: Theme.DEFAULT_THEME,
   };
 
@@ -153,7 +153,7 @@ class AgentDashboard extends React.Component<AgentDashboardProps, AgentDashboard
     return [
       (
         <ViewWrap key={1}>
-          <AgentDashboardSummaryView
+          <DashboardSummaryView
             tasks={this.props.tasks}
             theme={this.props.theme.summaryView}
           />
@@ -196,7 +196,7 @@ class AgentDashboard extends React.Component<AgentDashboardProps, AgentDashboard
   //
   // Render status cards in this page's top (header):
   //
-  renderStatusCards = (agentSummary: AgentSummary.AgentSummary) => {
+  renderStatusCards = (agentSummary: EmployeeSummary.EmployeeSummary) => {
     return (
       <StatusCardContainer>
         {this.renderStatusCard('aborted', agentSummary.aborted, 'Aborted')}

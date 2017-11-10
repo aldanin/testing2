@@ -1,16 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import AgentDashboardSummary from './';
-import {AgentDashboardSummaryProps } from './';
+import DashboardSummary from './';
+import {DashboardSummaryProps } from './';
 import * as Theme from './Theme'
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  const props: AgentDashboardSummaryProps = {
+  const props: DashboardSummaryProps = {
     tasks: [],
     theme: Theme.DEFAULT_THEME
   }
 
-  ReactDOM.render(<AgentDashboardSummary {...props}/>, div);
+  ReactDOM.render(<DashboardSummary {...props}/>, div);
 });

@@ -4,7 +4,7 @@ import * as Agents from '../types/Emloyee'
 import * as Tasks from '../types/Task'
 import * as TaskBasics from '../types/TaskBasics'
 import * as CommonFunctions from './CommonFunctions'
-// import * as AgentSummary from '../types/AgentSummary'
+// import * as EmployeeSummary from '../types/EmployeeSummary'
 
 //////////////////
 // Value arrays:
@@ -304,7 +304,7 @@ const createAgentTasks = (agent: Agents.AgentData) => {
 // Holds the final data structure, an array of the following interface:
 //
 interface AgentContainer {
-  agentId: Agents.AgentId,
+  employeeId: Agents.AgentId,
   tasks: Tasks.Task[]
 }
 
@@ -314,7 +314,7 @@ AgentMock.AGENTS.forEach(agent => {
   const tasks = createAgentTasks(agent);
 
   AGENT_CONTAINERS.push({
-    agentId: agent.id,
+    employeeId: agent.id,
     tasks: tasks,
   })
 })
@@ -323,7 +323,7 @@ AgentMock.AGENTS.forEach(agent => {
 ////////////////////////////////////////
 
 const getAgentContainerById =
-  (agentId: Agents.AgentId) => AGENT_CONTAINERS.find(container => container.agentId === agentId)
+  (employeeId: Agents.AgentId) => AGENT_CONTAINERS.find(container => container.employeeId === employeeId)
 
 export const getTasksInTimeslot = (tasks: Tasks.Task[], timeslot: TaskBasics.TimeSlotData) => {
   return timeslot
@@ -332,8 +332,8 @@ export const getTasksInTimeslot = (tasks: Tasks.Task[], timeslot: TaskBasics.Tim
     : tasks;
 }
 
-export const getTasksByAgentId = (agentId: Agents.AgentId, timeSlot: TaskBasics.TimeSlotData = null) => {
-  const container = getAgentContainerById(agentId);
+export const getTasksByAgentId = (employeeId: Agents.AgentId, timeSlot: TaskBasics.TimeSlotData = null) => {
+  const container = getAgentContainerById(employeeId);
   const tasks = getTasksInTimeslot(container.tasks, timeSlot);
 
   return tasks;

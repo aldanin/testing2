@@ -1,5 +1,5 @@
 import * as TabstripComponentTheme from '../../appWidgets/TabstripComponent/Theme'
-import * as AgentDashboardSummaryViewTheme from '../DashboardSummaryView/Theme'
+import * as DashboardSummaryViewTheme from '../DashboardSummaryView/Theme'
 import * as AgentDashboardTasksViewTheme from '../DashboardTasksView/Theme'
 import * as AgentDashboardCalendarViewTheme from '../DashboardCalendarView/Theme'
 import * as StatusCardTheme from '../../appWidgets/StatusCard/Theme'
@@ -17,7 +17,7 @@ export interface ThemeProps {
   },
 
   mainTabstrip: TabstripComponentTheme.TabsThemeProps,
-  summaryView: AgentDashboardSummaryViewTheme.ThemeProps,
+  summaryView: DashboardSummaryViewTheme.ThemeProps,
   tasksView: AgentDashboardTasksViewTheme.ThemeProps,
   calendarView: AgentDashboardCalendarViewTheme.ThemeProps,
   statusCard: StatusCardTheme.StatusCardThemeProps,
@@ -35,7 +35,7 @@ export const DEFAULT_THEME: ThemeProps = {
     borderColor: '#E9EDF6',
   },
   mainTabstrip: TabstripComponentTheme.DEFAULT_THEME,
-  summaryView: AgentDashboardSummaryViewTheme.DEFAULT_THEME,
+  summaryView: DashboardSummaryViewTheme.DEFAULT_THEME,
   tasksView: AgentDashboardTasksViewTheme.DEFAULT_THEME,
   calendarView: AgentDashboardCalendarViewTheme.DEFAULT_THEME,
   statusCard: StatusCardTheme.DEFAULT_THEME,

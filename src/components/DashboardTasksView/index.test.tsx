@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import AgentDashboardSummary from './';
+import DashboardSummary from './';
 import {AgentDashboardTasksProps } from './';
 import * as Theme from './Theme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -14,5 +14,5 @@ it('renders without crashing', () => {
     onAbortTask: (taskId: string) => null,
   }
 
-  ReactDOM.render(<MuiThemeProvider><AgentDashboardSummary {...props}/></MuiThemeProvider>, div);
+  ReactDOM.render(<MuiThemeProvider><DashboardSummary {...props}/></MuiThemeProvider>, div);
 });

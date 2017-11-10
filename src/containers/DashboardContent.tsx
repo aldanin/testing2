@@ -2,12 +2,12 @@ import * as React from 'react'
 import { connect } from 'react-redux';
 import AgentDashboardLayout from '../components/DashboardLayout'
 import theme from '../theme/ScTheme'
-import * as AgentSummary from '../types/EmployeeSummary'
-import * as MockAgentSummary from '../mockData/EmployeeSummary'
+import * as EmployeeSummary from '../types/EmployeeSummary'
+import * as MockEmployeeSummary from '../mockData/EmployeeSummary'
 import * as MockTasks from '../mockData/Tasks'
 
 export interface AgentDashboardContentProps extends React.Props<AgentDashboardContent> {
-  agentSummary?: AgentSummary.AgentSummary,
+  agentSummary?: EmployeeSummary.EmployeeSummary,
   onAbortTask: (taskId:string) => void;
 }
 
@@ -25,7 +25,7 @@ class AgentDashboardContent extends React.Component<AgentDashboardContentProps, 
   render() {
     return (
       <AgentDashboardLayout
-        agentSummary={MockAgentSummary.getAgentSummary('3')}
+        agentSummary={MockEmployeeSummary.getEmployeeSummary('3')}
         tasks={MockTasks.getTasksByAgentId('3').slice(0, 1000)}
         onAbortTask={(id) => console.log('abort', id)}
         theme={theme.dashboardPage}

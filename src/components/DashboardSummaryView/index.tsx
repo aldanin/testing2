@@ -9,12 +9,12 @@ import DashChart from '../../appWidgets/TasksBarChart'
 import PinChart from '../../appWidgets/TasksPinsChart'
 import ControlStrip from '../DashboardControlStrip'
 
-export interface AgentDashboardSummaryProps extends React.Props<AgentDashboardSummary> {
+export interface DashboardSummaryProps extends React.Props<DashboardSummary> {
   tasks: Task.Task[],
   theme: Theme.ThemeProps;
 }
 
-export interface AgentDashboardSummaryState {
+export interface DashboardSummaryState {
   currentTimeSlotType: Task.TimeSlotType,
   currentDisplayDatesSpanFactorInHours: number,
 }
@@ -53,15 +53,15 @@ const RoundedCardsContainer = styled.div`
   justify-content: space-between;
 `;
 
-class AgentDashboardSummary extends React.Component<AgentDashboardSummaryProps, AgentDashboardSummaryState> {
-  static defaultProps: Partial<AgentDashboardSummaryProps> = {
+class DashboardSummary extends React.Component<DashboardSummaryProps, DashboardSummaryState> {
+  static defaultProps: Partial<DashboardSummaryProps> = {
     theme: Theme.DEFAULT_THEME,
   };
 
   private lastId: number;
   private pageSize: number;
 
-  constructor(props: AgentDashboardSummaryProps) {
+  constructor(props: DashboardSummaryProps) {
 
     super(props);
 
@@ -237,4 +237,4 @@ class AgentDashboardSummary extends React.Component<AgentDashboardSummaryProps, 
   }
 }
 
-export default AgentDashboardSummary;
+export default DashboardSummary;

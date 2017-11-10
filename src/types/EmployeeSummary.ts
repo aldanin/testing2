@@ -4,8 +4,8 @@ import * as Agent from './Emloyee'
 //
 // Represents task run results aggregations according to specific time ranges (timeSlot):
 //
-export interface AgentSummary {
-  agentId: Agent.AgentId
+export interface EmployeeSummary {
+  employeeId: Agent.AgentId
   timeSlot: TaskBasics.TimeSlotData,
   aborted?: number,
   failed?: number,
@@ -17,8 +17,8 @@ export interface AgentSummary {
   scheduled?: number,
 }
 
-export const DEFAULT_AGENT_SUMMARY: AgentSummary = {
-  agentId: '-1',
+export const DEFAULT_AGENT_SUMMARY: EmployeeSummary = {
+  employeeId: '-1',
   timeSlot: TaskBasics.DEFAULT_TIME_SLOT,
   aborted: null,
   failed: null,

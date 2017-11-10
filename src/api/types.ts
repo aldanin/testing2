@@ -5,7 +5,7 @@ export interface ApiQueryParams {
 }
 
 export interface ProductMeta {
-  agentId: string
+  employeeId: string
   productId?: string
   productType?: string
 }

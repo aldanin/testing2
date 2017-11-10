@@ -10,7 +10,7 @@ function randomInt(max: number) {
   return Math.floor(Math.random() * max)
 }
 
-const targetNames = [
+const parentNames = [
   'Yuri the Fox', // id = '0'
   'Ahmad the assassin', // id = '1'
   'Yoram the Hoodlum', // id = '2'
@@ -26,7 +26,7 @@ const employeeNames = [
   'James',
 ]
 
-export const TARGETS = targetNames.map(name => {
+export const PARENTS = parentNames.map(name => {
   return {
     id: getId(),
     name: name
@@ -35,13 +35,13 @@ export const TARGETS = targetNames.map(name => {
 
 export const EMPLOYEES: Agents.AgentData[] = [];
 
-TARGETS.forEach(target => {
+PARENTS.forEach(parent => {
   for (let i: number = 0; i < 5; i++) {
     const employee = {
       id: getId(),
       name: employeeNames[randomInt(employeeNames.length)],
-      targetId: target.id,
-      targetName: target.name,
+      parentId: parent.id,
+      parentName: parent.name,
     }
 
     EMPLOYEES.push(employee);

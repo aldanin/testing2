@@ -24,7 +24,7 @@ export function buildURL(props: BuildUrlProps) {
     // TODO: handle tab link
   }
 
-  return `/agent/${props.employee_id}/${props.viewPage}`;
+  return `/emp/${props.employee_id}/${props.viewPage}`;
 }
 
 export function getViewPageFromURL(location: Location) {

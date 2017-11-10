@@ -11,8 +11,8 @@ import * as CommonFunctions from './CommonFunctions'
 //////////////////
 const descriptions = {
   main: 'Main Account',
-  gmail: 'Gmail extraction',
-  icloud: 'iCloud extraction',
+  pazomat: 'Gmail extraction',
+  padInc: 'PazInc extraction',
   none: ''
 };
 
@@ -114,9 +114,9 @@ const createSubserviceInfo = () => {
   return info;
 }
 
-const createGoogleSubServicesData = () => {
+const createDorAlonSubServicesData = () => {
   const subservice = {
-    gmail: {
+    pazomat: {
       active: createSubserviceInfo(),
       inbox: createSubserviceInfo(),
       sent: createSubserviceInfo(),
@@ -127,7 +127,7 @@ const createGoogleSubServicesData = () => {
     },
     bookmarks: createSubserviceInfo(),
     contacts: createSubserviceInfo(),
-    googlePlus: createSubserviceInfo(),
+    alonit: createSubserviceInfo(),
     profile: createSubserviceInfo(),
     search: createSubserviceInfo(),
     drive: createSubserviceInfo(),
@@ -141,7 +141,7 @@ const createGoogleSubServicesData = () => {
   return subservice;
 }
 
-const createICloudSubServicesData = () => {
+const createPazIncSubServicesData = () => {
   const subservice = {
     whatsApp: {
       active: createSubserviceInfo(),
@@ -157,13 +157,13 @@ const createICloudSubServicesData = () => {
 }
 
 export const createSubServices = (service: TaskBasics.ServiceType) => {
-  let subservice: Tasks.GoogleSubServiceData | Tasks.CloudSubServiceData;
+  let subservice: Tasks.DorAlonSubServiceData | Tasks.PazIncSubServiceData;
   switch (service) {
-    case 'Google':
-      subservice = createGoogleSubServicesData();
+    case 'DorAlon':
+      subservice = createDorAlonSubServicesData();
       break;
-    case 'iCloud':
-      subservice = createICloudSubServicesData();
+    case 'PazInc':
+      subservice = createPazIncSubServicesData();
       break;
     default:
       break;
@@ -173,14 +173,14 @@ export const createSubServices = (service: TaskBasics.ServiceType) => {
 ////////////////
 // Description:
 ////////////////
-const getICloudDescription = () => {
+const getPazIncDescription = () => {
   let desc;
   switch (CommonFunctions.randomInt(3)) {
     case 0:
       desc = descriptions.main;
       break;
     case 1:
-      desc = descriptions.icloud;
+      desc = descriptions.padInc;
       break;
     case 2:
       desc = null;
@@ -191,14 +191,14 @@ const getICloudDescription = () => {
   return desc;
 }
 
-const getGoogleDescription = () => {
+const getDorAlonDescription = () => {
   let desc;
   switch (CommonFunctions.randomInt(3)) {
     case 0:
       desc = descriptions.main;
       break;
     case 1:
-      desc = descriptions.gmail;
+      desc = descriptions.pazomat;
       break;
     case 2:
       desc = null;
@@ -212,11 +212,11 @@ const getGoogleDescription = () => {
 const getDescription = (service: TaskBasics.ServiceType) => {
   let desc;
   switch (service) {
-    case 'Google':
-      desc = getGoogleDescription();
+    case 'DorAlon':
+      desc = getDorAlonDescription();
       break;
-    case 'iCloud':
-      desc = getICloudDescription();
+    case 'PazInc':
+      desc = getPazIncDescription();
       break;
     default:
       break;

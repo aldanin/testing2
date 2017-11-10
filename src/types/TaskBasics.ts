@@ -1,7 +1,7 @@
 //
 // Represents common time spans (slots) in the application:
 //
-export type ServiceType = 'Google' | 'iCloud';// | 'All';
+export type ServiceType = 'DorAlon' | 'PazInc';// | 'All';
 export type TimeSlotType = 'Day' | 'Week' | 'Month';
 
 export interface TimeSlotData {

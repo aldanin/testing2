@@ -29,19 +29,19 @@ const ActionText = styled.div`
   cursor: pointer;
 `;
 
-export interface GoogleTilesGridProps {
+export interface DorAlonTilesGridProps {
   theme?: Theme.ThemeProps
 }
 
-export interface GoogleTilesGridState {
+export interface DorAlonTilesGridState {
 }
 
-class GoogleTilesGrid extends React.Component<GoogleTilesGridProps, GoogleTilesGridState> {
-  static defaultProps: Partial<GoogleTilesGridProps> = {
+class DorAlonTilesGrid extends React.Component<DorAlonTilesGridProps, DorAlonTilesGridState> {
+  static defaultProps: Partial<DorAlonTilesGridProps> = {
     theme: Theme.defaultTheme,
   }
 
-  constructor (props: GoogleTilesGridProps) {
+  constructor (props: DorAlonTilesGridProps) {
     super(props);
 
     this.state = {
@@ -54,10 +54,10 @@ class GoogleTilesGrid extends React.Component<GoogleTilesGridProps, GoogleTilesG
       <ThemeProvider theme={this.props.theme}>
         <FrameView>
           <Grid>
-            <Tile title={'Gmail'} icon={'mail'} bgColor={this.props.theme.subService.gmail}/>
+            <Tile title={'Gmail'} icon={'mail'} bgColor={this.props.theme.subService.pazomat}/>
             <Tile title={'Bookmarks'} icon={'bookmark'} bgColor={this.props.theme.subService.bookmarks}/>
             <Tile title={'Contacts'} icon={'person_add'} bgColor={this.props.theme.subService.contacts}/>
-            <Tile title={'Google+'} icon={'security'} bgColor={this.props.theme.subService.google}/>
+            <Tile title={'DorAlon+'} icon={'security'} bgColor={this.props.theme.subService.dorAlon}/>
             <Tile title={'Profile'} icon={'contact_mail'} bgColor={this.props.theme.subService.profile}/>
             <Tile title={'Search'} icon={'search'} bgColor={this.props.theme.subService.search}/>
             <Tile title={'Drive'} icon={'save'} bgColor={this.props.theme.subService.drive}/>
@@ -76,4 +76,4 @@ class GoogleTilesGrid extends React.Component<GoogleTilesGridProps, GoogleTilesG
     )}
 }
 
-export default GoogleTilesGrid;
+export default DorAlonTilesGrid;

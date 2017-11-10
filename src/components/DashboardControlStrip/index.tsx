@@ -89,11 +89,11 @@ const getServiceSelector = (props: DashboardControlStripProps) => {
     title: 'All',
     callback: () => props.onServiceSelected('All'),
   }, {
-    title: 'iCloud',
-    callback: () => props.onServiceSelected('iCloud'),
+    title: 'PazInc',
+    callback: () => props.onServiceSelected('PazInc'),
   }, {
-    title: 'Google',
-    callback: () => props.onServiceSelected('Google'),
+    title: 'DorAlon',
+    callback: () => props.onServiceSelected('DorAlon'),
   }];
 
   return (

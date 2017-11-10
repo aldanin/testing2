@@ -24,7 +24,7 @@ export interface SubServicesToolbarProps extends React.Props<SubServicesToolbar>
   withGmail?: GmailStructure;
   withBookmarks?: boolean;
   withContacts?: boolean;
-  withGooglePlus?: boolean;
+  withDorAlonPlus?: boolean;
   withGroups?: boolean;
   withProfile?: boolean;
   withSearches?: boolean;
@@ -170,7 +170,7 @@ class SubServicesToolbar extends React.Component<SubServicesToolbarProps, SubSer
     },
     withBookmarks: true,
     withContacts: true,
-    withGooglePlus: true,
+    withDorAlonPlus: true,
     withGroups: true,
     withProfile: true,
     withSearches: true,
@@ -245,7 +245,7 @@ class SubServicesToolbar extends React.Component<SubServicesToolbarProps, SubSer
           {this.props.withBookmarks ? this.renderTooltipRow('Bookmarks', 'bookmark') : null}
           {this.props.withBookmarks ? this.renderTooltipRow('Bookmarks', 'bookmark') : null}
           {this.props.withContacts ? this.renderTooltipRow('Contacts', 'contacts') : null}
-          {this.props.withGooglePlus ? this.renderTooltipRow('Google+', 'security') : null}
+          {this.props.withDorAlonPlus ? this.renderTooltipRow('DorAlon+', 'security') : null}
           {this.props.withGroups ? this.renderTooltipRow('Groups', 'group') : null}
           {this.props.withProfile ? this.renderTooltipRow('Profile', 'person') : null}
           {this.props.withSearches ? this.renderTooltipRow('Searches', 'search') : null}

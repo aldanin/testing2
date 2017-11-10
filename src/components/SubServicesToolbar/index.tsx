@@ -100,7 +100,7 @@ export interface SubServicesToolbarProps extends React.Props<SubServicesToolbar>
   withGmail?: GmailStructure | boolean;
   withBookmarks?: boolean;
   withContacts?: boolean;
-  withGooglePlus?: boolean;
+  withDorAlonPlus?: boolean;
   withGroups?: boolean;
   withProfile?: boolean;
   withSearches?: boolean;
@@ -134,7 +134,7 @@ class SubServicesToolbar extends React.Component<SubServicesToolbarProps, SubSer
     },
     withBookmarks: false,
     withContacts: false,
-    withGooglePlus: false,
+    withDorAlonPlus: false,
     withGroups: false,
     withProfile: false,
     withSearches: false,
@@ -182,7 +182,7 @@ class SubServicesToolbar extends React.Component<SubServicesToolbarProps, SubSer
             {this.hasWhatsapp() ? this.renderWhatsapp() : null}
             {this.props.withBookmarks ? (this.renderSubService(this.renderBookmarks())) : null}
             {this.props.withContacts ? (this.renderSubService(this.renderContacts())) : null}
-            {this.props.withGooglePlus ? (this.renderSubService(this.renderGooglePlus())) : null}
+            {this.props.withDorAlonPlus ? (this.renderSubService(this.renderDorAlonPlus())) : null}
             {this.props.withGroups ? (this.renderSubService(this.renderGroups())) : null}
             {this.props.withProfile ? (this.renderSubService(this.renderProfile())) : null}
             {this.props.withSearches ? (this.renderSubService(this.renderSearches())) : null}
@@ -238,7 +238,7 @@ class SubServicesToolbar extends React.Component<SubServicesToolbarProps, SubSer
           {this.hasWhatsapp() ? (this.renderWhatsappToolTip()) : null}
           {this.props.withBookmarks ? (<TooltipRow>{this.renderBookmarks()} Bookmarks</TooltipRow>) : null}
           {this.props.withContacts ? (<TooltipRow>{this.renderContacts()} Contacts</TooltipRow>) : null}
-          {this.props.withGooglePlus ? (<TooltipRow>{this.renderGooglePlus()} Google+</TooltipRow>) : null}
+          {this.props.withDorAlonPlus ? (<TooltipRow>{this.renderDorAlonPlus()} DorAlon+</TooltipRow>) : null}
           {this.props.withGroups ? (<TooltipRow>{this.renderGroups()} Groups</TooltipRow>) : null}
           {this.props.withProfile ? (<TooltipRow>{this.renderProfile()} Profile</TooltipRow>) : null}
           {this.props.withSearches ? (<TooltipRow>{this.renderSearches()} Search</TooltipRow>) : null}
@@ -263,7 +263,7 @@ class SubServicesToolbar extends React.Component<SubServicesToolbarProps, SubSer
     return <SubServiceIcon className="material-icons">contacts</SubServiceIcon>
   }
 
-  renderGooglePlus() {
+  renderDorAlonPlus() {
     return <SubServiceIcon className="material-icons">security</SubServiceIcon>
   }
 

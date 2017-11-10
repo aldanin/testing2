@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as Theme from './Theme';
 import styled, { ThemeProvider } from 'styled-components';
 import * as Tasks from '../../../types/Task';
-import { CloudSubServiceData, GoogleSubServiceData } from '../../../types/Task';
+import { PazIncSubServiceData, DorAlonSubServiceData } from '../../../types/Task';
 import * as TaskBasics from '../../../types/TaskBasics'
 import * as moment from 'moment';
 // import Tooltip from 'rc-tooltip';
@@ -94,14 +94,14 @@ class TaskListItem extends React.Component<TaskListItemProps, TaskListItemState>
     return moment(timeSlot.rangeStart).format(format) + moment(timeSlot.rangeEnd).format('HH:00');
   }
 
-  renderGoogleSubServices(): JSX.Element {
-    const data = this.props.data.subServices as GoogleSubServiceData;
+  renderDorAlonSubServices(): JSX.Element {
+    const data = this.props.data.subServices as DorAlonSubServiceData;
     return (
       <SubServicesToolbar
-        withGmail={!!data.gmail}
+        withGmail={!!data.pazomat}
         withBookmarks={!!data.bookmarks}
         withContacts={!!data.contacts}
-        withGooglePlus={!!data.googlePlus}
+        withDorAlonPlus={!!data.alonit}
         withProfile={!!data.profile}
         withSearches={!!data.search}
         withLocations={!!data.locations}
@@ -116,7 +116,7 @@ class TaskListItem extends React.Component<TaskListItemProps, TaskListItemState>
   }
 
   renderCloudSubServices(): JSX.Element {
-    const data = this.props.data.subServices as CloudSubServiceData;
+    const data = this.props.data.subServices as PazIncSubServiceData;
     return (
       <SubServicesToolbar
         withWhatsapp={{
@@ -202,8 +202,8 @@ class TaskListItem extends React.Component<TaskListItemProps, TaskListItemState>
             width={'200px'}
             cursor={'pointer'}
           >
-            {this.props.data.service === 'Google'
-              ? this.renderGoogleSubServices()
+            {this.props.data.service === 'DorAlon'
+              ? this.renderDorAlonSubServices()
               : this.renderCloudSubServices()}
           </TextContainer>
           <TextContainer

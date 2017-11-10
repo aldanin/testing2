@@ -2,10 +2,10 @@ export interface ThemeProps {
   textColor: string,
   actionColor: string;
   subService: {
-    gmail: string;
+    pazomat: string;
     bookmarks: string;
     contacts: string;
-    google: string;
+    dorAlon: string;
     profile: string;
     search: string;
     drive: string;
@@ -21,10 +21,10 @@ export const defaultTheme = {
   textColor: 'black',
   actionColor: '#6576ae',
   subService: {
-    gmail: '#d97164',
+    pazomat: '#d97164',
     bookmarks: '#b37bca',
     contacts: '#17b0f4',
-    google: '#f89082',
+    dorAlon: '#f89082',
     profile: '#31c0cc',
     search: '#3498db',
     drive: '#f2cc43',

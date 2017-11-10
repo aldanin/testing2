@@ -1,6 +1,6 @@
 import { AgentData } from './Emloyee';
 
-export type ServiceTypeFilter = 'Google' | 'iCloud' | 'All';
+export type ServiceTypeFilter = 'DorAlon' | 'PazInc' | 'All';
 export type TaskStatus = 'Aborted' | 'Completed' | 'Running' | 'Scheduled' | 'Pending' | 'Canceled';
 export type CompleteStatus = 'Success' | 'Failed' | 'Partial' | null;
 export type TimeSlotType = 'Day' | 'Week' | 'Month';
@@ -11,7 +11,7 @@ export interface Task {
   name: string;
   employee: AgentData;
   service: TaskBasics.ServiceType;
-  subServices: GoogleSubServiceData | CloudSubServiceData;
+  subServices: DorAlonSubServiceData | PazIncSubServiceData;
   proxy: string;
   index: number;
   startTimestamp: number;
@@ -30,8 +30,8 @@ export interface SubServiceInfo {
   message: string,
 }
 
-export interface GoogleSubServiceData {
-  gmail: {
+export interface DorAlonSubServiceData {
+  pazomat: {
     active: SubServiceInfo;
     inbox: SubServiceInfo;
     sent: SubServiceInfo;
@@ -42,7 +42,7 @@ export interface GoogleSubServiceData {
   };
   bookmarks: SubServiceInfo;
   contacts: SubServiceInfo;
-  googlePlus: SubServiceInfo;
+  alonit: SubServiceInfo;
   profile: SubServiceInfo;
   search: SubServiceInfo;
   drive: SubServiceInfo;
@@ -54,7 +54,7 @@ export interface GoogleSubServiceData {
   group: SubServiceInfo;
 }
 
-export interface CloudSubServiceData {
+export interface PazIncSubServiceData {
   whatsApp: {
     active: SubServiceInfo;
     messages: SubServiceInfo;

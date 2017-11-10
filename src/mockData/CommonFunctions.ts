@@ -71,10 +71,10 @@ export const createServiceType = () => {
   let serviceType: TaskBasics.ServiceType;
   switch (randomInt(1)) {
     case 0:
-      serviceType = 'Google';
+      serviceType = 'DorAlon';
       break;
     case 1:
-      serviceType = 'iCloud';
+      serviceType = 'PazInc';
       break;
     default:
       break;

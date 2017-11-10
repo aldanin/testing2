@@ -1,4 +1,4 @@
-import { AgentData } from './Agent';
+import { AgentData } from './Emloyee';
 import * as TaskBasics from './TaskBasics'
 
 export type RecurrencePattern = 'Once' | 'Daily' | 'Weekly' | 'Monthly';

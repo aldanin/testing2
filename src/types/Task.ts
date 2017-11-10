@@ -1,4 +1,4 @@
-import { AgentData } from './Agent';
+import { AgentData } from './Emloyee';
 
 export type ServiceTypeFilter = 'Google' | 'iCloud' | 'All';
 export type TaskStatus = 'Aborted' | 'Completed' | 'Running' | 'Scheduled' | 'Pending' | 'Canceled';

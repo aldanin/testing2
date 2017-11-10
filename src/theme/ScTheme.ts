@@ -4,7 +4,7 @@ import {
 } from './constants'
 // import { addAlpha } from './helpers'
 import Header from './Header'
-import { dashboardPage } from './AgentDashboard'
+import { dashboardPage } from './DashboardPage'
 
 const loginPage = {
   background: 'url(\'/images/login_background.png\') 0/cover',

@@ -1,6 +1,6 @@
 import * as moment from 'moment'
-import * as AgentMock from './Agents'
-import * as Agents from '../types/Agent'
+import * as AgentMock from './Employees'
+import * as Agents from '../types/Emloyee'
 import * as Tasks from '../types/Task'
 import * as TaskBasics from '../types/TaskBasics'
 import * as CommonFunctions from './CommonFunctions'

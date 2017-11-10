@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled, { ThemeProvider } from 'styled-components';
-import AgentControlFrame from '../components/AgentControlFrame/index';
-import AgentControlRowLayout from '../components/AgentControlRowLayout/index';
+import AgentControlFrame from '../components/ControlFrame/index';
+import AgentControlRowLayout from '../components/ControlRowLayout/index';
 import { AgentControlTheme } from '../theme/AgentControl';
 import AgentRunList from '../components/AgentRunList/index';
 import { getAgentRunsByAgentId } from '../mockData/AgentRuns';

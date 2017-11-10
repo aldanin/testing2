@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as Theme from './Theme';
 import styled, { ThemeProvider } from 'styled-components';
 import { AgentRunData } from '../../types/AgentRun';
-import AgentControlRowLayout from '../AgentControlRowLayout/index';
+import AgentControlRowLayout from '../ControlRowLayout/index';
 import AgentRunTask from '../AgentRunTask/index';
 
 const Row = styled.div`

@@ -1,3 +1,11 @@
 .ReactTable .rt-thead {
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
+}
+
+.ReactTable .rt-thead .rt-tr {
+  height: 35px;
+}
+
+.ReactTable .rt-tbody .rt-tr {
+  height: 45px;
 }

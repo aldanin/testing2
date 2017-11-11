@@ -7,7 +7,7 @@ import Header from './Header'
 import { dashboardPage } from './DashboardPage'
 
 const loginPage = {
-  background: 'url(\'/images/login_background.png\') 0/cover',
+  background: 'url(\'/images/login_image1.jpg\') 0/cover',
   textColor: TEXT_COLORS.T01,
   hintTextColor: TEXT_COLORS.T15,
   errorTextColor: TEXT_COLORS.T12,

@@ -118,11 +118,11 @@ const createDorAlonSubServicesData = () => {
   const subservice = {
     pazomat: {
       active: createSubserviceInfo(),
-      inbox: createSubserviceInfo(),
+      credit: createSubserviceInfo(),
       sent: createSubserviceInfo(),
       drafts: createSubserviceInfo(),
       attachments: createSubserviceInfo(),
-      amountOfEmails: createSubserviceInfo(),
+      amountOfCredits: createSubserviceInfo(),
       timeRange: createSubserviceInfo(),
     },
     bookmarks: createSubserviceInfo(),

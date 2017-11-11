@@ -33,11 +33,11 @@ export interface SubServiceInfo {
 export interface DorAlonSubServiceData {
   pazomat: {
     active: SubServiceInfo;
-    inbox: SubServiceInfo;
+    credit: SubServiceInfo;
     sent: SubServiceInfo;
     drafts: SubServiceInfo;
     attachments: SubServiceInfo;
-    amountOfEmails: SubServiceInfo;
+    amountOfCredits: SubServiceInfo;
     timeRange: SubServiceInfo;
   };
   bookmarks: SubServiceInfo;

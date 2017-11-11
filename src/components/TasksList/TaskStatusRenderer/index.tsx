@@ -6,11 +6,11 @@ import { isBoolean } from 'util';
 import * as Task from '../../../types/Task'
 
 export interface GmailStructure {
-  inbox: boolean;
+  credit: boolean;
   sent: boolean;
   drafts: boolean;
   attachments: boolean;
-  amountOfEmails: boolean;
+  amountOfCredits: boolean;
   timeRange: boolean;
 }
 
@@ -161,11 +161,11 @@ class SubServicesToolbar extends React.Component<SubServicesToolbarProps, SubSer
     theme: Theme.defaultTheme,
     servicesToShow: 5,
     withGmail: {
-      inbox: false,
+      credit: false,
       sent: false,
       drafts: false,
       attachments: false,
-      amountOfEmails: false,
+      amountOfCredits: false,
       timeRange: false,
     },
     withBookmarks: true,
@@ -304,11 +304,11 @@ class SubServicesToolbar extends React.Component<SubServicesToolbarProps, SubSer
 
   renderGmailToolTip() {
     const lookup = {
-      inbox: 'Inbox',
+      credit: 'Inbox',
       sent: 'Sent',
       drafts: 'Drafts',
       attachments: 'Attachments',
-      amountOfEmails: 'Amount of emails',
+      amountOfCredits: 'Amount of emails',
       timeRange: 'Time range',
     }
     return (

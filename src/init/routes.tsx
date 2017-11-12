@@ -7,15 +7,15 @@ import RequireAuthWrapper from '../containers/RequireAuthWrapper'
 import LoginPage from '../pages/Login'
 // import HomePage from '../pages/Home'
 import NotFoundPage from '../pages/NotFound'
-import DashboardPage from '../pages/DashboardPage'
+import InventoryPage from '../pages/InventoryPage'
 
 export default (
   <Route path="/" component={App}>
     <Route path="/login" component={LoginPage} />
     <Route component={RequireAuthWrapper}>
-      <IndexRoute component={DashboardPage}/>
-      <Route path="/emp/:employee_id" component={DashboardPage} />
-      <Route path={`/emp/:employee_id/${ViewPage.DASHBOARD}`} component={DashboardPage} />
+      <IndexRoute component={InventoryPage}/>
+      <Route path="/emp/:employee_id" component={InventoryPage} />
+      <Route path={`/emp/:employee_id/${ViewPage.INVENTORY}`} component={InventoryPage} />
     </Route>
     <Route path="*" component={NotFoundPage} />
   </Route >

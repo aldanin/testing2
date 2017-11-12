@@ -1,6 +1,6 @@
 export const ViewPage = {
   CONTROL: 'control',
-  DASHBOARD: 'dashboard'
+  INVENTORY: 'dashboard'
 }
 
 // index of view name in url parts

@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import Link from '../components/Header/Link'
 import NotificationsDrawer from '../components/Header/NotificationsDrawer'
 import UserLinksConnector from '../containers/UserLinksConnector'
-import DashboardContent from '../containers/DashboardContent'
+import InventoryView from '../containers/InventoryViewContent'
 import { ToolbarGroup } from 'material-ui/Toolbar'
 import ActionHome from 'material-ui/svg-icons/action/home'
 import { Header as HeaderTheme } from '../theme/'
@@ -42,7 +42,7 @@ const Dashboard: React.SFC<DashboardProps> = () => {
   return (
     <DefaultLayout
       header={renderHeader()}
-      main={<DashboardContent/>}
+      main={<InventoryView/>}
     />
   )
 }

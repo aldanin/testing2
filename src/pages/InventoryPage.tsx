@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import Link from '../components/Header/Link'
 import NotificationsDrawer from '../components/Header/NotificationsDrawer'
 import UserLinksConnector from '../containers/UserLinksConnector'
-import InventoryView from '../containers/InventoryViewContent'
+import InventoryViewContent from '../containers/InventoryViewContent'
 import { ToolbarGroup } from 'material-ui/Toolbar'
 import ActionHome from 'material-ui/svg-icons/action/home'
 import { Header as HeaderTheme } from '../theme/'
@@ -14,7 +14,7 @@ const Label = styled.span`
   color: ${(props) => props.theme.highlightColor};
 `
 
-interface DashboardProps {
+interface InventoryPageProps {
 }
 
 const renderHeader = () => {
@@ -38,13 +38,13 @@ const renderHeader = () => {
   )
 }
 
-const Dashboard: React.SFC<DashboardProps> = () => {
+const InventoryPage: React.SFC<InventoryPageProps> = () => {
   return (
     <DefaultLayout
       header={renderHeader()}
-      main={<InventoryView/>}
+      main={<InventoryViewContent/>}
     />
   )
 }
 
-export default Dashboard
+export default InventoryPage

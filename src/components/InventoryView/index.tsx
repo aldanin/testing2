@@ -6,6 +6,7 @@ import * as EmployeeSummary from '../../types/EmployeeSummary'
 import StatusCard from '../../appWidgets/StatusCard'
 import DashboardSummaryView from '../DashboardSummaryView'
 import InventoryStationsView from '../InventoryStationsView'
+import { InventoryReport } from '../../types/InventoryReport'
 import DashboardCalendarView from '../DashboardCalendarView'
 import * as Task from '../../types/Task'
 import * as TaskBasics from '../../types/TaskBasics'
@@ -13,6 +14,7 @@ import * as moment from 'moment'
 import TabstripComponent from '../../appWidgets/TabstripComponent'
 
 export interface InventoryViewProps extends React.Props<InventoryView> {
+  inventoryReport: InventoryReport,
   employeeSummay: EmployeeSummary.EmployeeSummary
   tasks: Task.Task[],
   onAbortTask: (taskId:string) => void,
@@ -168,7 +170,7 @@ class InventoryView extends React.Component<InventoryViewProps, InventoryViewSta
       (
         <ViewWrap key={3}>
           <InventoryStationsView
-            tasks={this.props.tasks}
+            inventoryReport={this.props.inventoryReport}
             onAbortTask={this.props.onAbortTask}
             theme={this.props.theme.tasksView}
           />

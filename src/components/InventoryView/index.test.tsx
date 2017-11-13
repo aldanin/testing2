@@ -9,7 +9,7 @@ import * as Theme from './Theme'
 it('renders without crashing', () => {
   const div = document.createElement('div');
   const props: InventoryViewProps = {
-    inventoryReport: INVENTORY_REPORT_DEFAULT,
+    inventoryMainData: INVENTORY_REPORT_DEFAULT,
     employeeSummay: EmployeeSummary.DEFAULT_AGENT_SUMMARY,
     tasks: [],
     onAbortTask: (taskid: string) => null,

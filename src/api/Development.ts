@@ -1,5 +1,8 @@
-// import * as types from './types';
+import * as types from './types';
 import ProductionApi from './Production';
+import { getInventoryMainData } from '../mockData/InventoryMain'
+import * as InventoryData from '../types/InventoryData'
+
 // import { AxiosPromise } from 'axios';
 
 class MockApi implements Partial<ProductionApi> {
@@ -26,6 +29,10 @@ class MockApi implements Partial<ProductionApi> {
 
   public doLogout(): Promise<void> {
     return Promise.resolve();
+  }
+
+  public fetchInventoryMain(meta: types.ProductMeta, query: types.ApiQueryParams): Promise<any> {
+    return (getMockData(getInventoryMainData(query.filters)) as Promise<InventoryData.InventoryMain>);
   }
 }
 

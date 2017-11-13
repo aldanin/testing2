@@ -1,15 +1,9 @@
 import * as RosemanTypes from './RosemanTypes'
 import * as Enums from './Enums'
 
-export default interface Filters {
-  dates?: {
-    from: RosemanTypes.Date,
-    to: RosemanTypes.Date,
-  },
-  sort?: {
-    desc: boolean,
-    sortByColumn: string,
-  },
+export interface FiltersData {
+  dates?: Dates,
+  sort?: Sort,
   page?: {
     pageNumber?: number,
     pageSize?: number,
@@ -23,10 +17,26 @@ export default interface Filters {
   }
 }
 
+export interface Dates {
+  from: RosemanTypes.Date,
+  to: RosemanTypes.Date,
+}
+
 export interface LogicalExpression {
   index: number,
   fieldName: string,
   operator: Enums.LogicOperation,
   value: any,
   andOr: Enums.AndOr,
+}
+
+export interface Sort {
+  desc: boolean,
+  sortByColumn: string,
+}
+
+export interface Page {
+  pageNumber?: number,
+  pageSize?: number,
+  clientGuid?: RosemanTypes.ClientGuid,
 }

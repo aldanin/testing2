@@ -1,14 +1,14 @@
 import * as React from 'react'
 import * as Theme from './Theme'
 import styled, { ThemeProvider } from 'styled-components';
-import {InventoryReport} from '../../types/InventoryReport'
-import * as TaskBasics from '../../types/TaskBasics'
+import {InventoryMain} from '../../types/InventoryData'
+import  * as TaskBasics from '../../types/TaskBasics'
 import ControlStrip from '../DashboardControlStrip'
 import TestTable from './table_test'
 import * as Task from '../../types/Task'
 
 export interface InventoryStationsViewProps extends React.Props<InventoryStationsView> {
-  inventoryReport: InventoryReport,
+  inventoryMainData: InventoryMain,
   onAbortTask: (taskId: string) => void;
   theme: Theme.ThemeProps;
 }
@@ -97,7 +97,7 @@ class InventoryStationsView extends React.Component<InventoryStationsViewProps, 
           />
           <MainPartWrap>
             <TestTable
-              data={this.props.inventoryReport.stations}
+              data={this.props.inventoryMainData.stations}
             />
             {/*<TasksList*/}
               {/*data={tasks}*/}

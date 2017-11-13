@@ -1,19 +1,19 @@
 import * as React from "react";
 import {
-  // makeData,
   // Logo,
   // Tips
 } from "./utils";
 import { StationInventorySummary } from '../../types/StationInventorySummary'
-import ReactTable from "react-table";
-import "react-table/react-table.css";
+import ReactTable from 'react-table';
+import 'react-table/react-table.css';
+import './index.css'
 
 export interface TestTableProps {
   data: StationInventorySummary[]
 }
 
-export interface TestTableState{
-  data: StationInventorySummary[]
+export interface TestTableState {
+  resized: any[],
 }
 
 const columns = [{
@@ -21,12 +21,12 @@ const columns = [{
   accessor: 'customerName'
 }, {
   Header: 'Station Name',
-  id: 'lastName',
+  id: 'stationName',
   accessor: d => d.stationName
-},{
+}, {
   Header: 'Station #',
-  id: 'lastName',
-  accessor: d => d.stationNumber
+  id: 'stationId',
+  accessor: d => d.stationId
 }, {
   Header: 'Nozzle Reader Count',
   accessor: 'NRCount',
@@ -53,46 +53,42 @@ const columns = [{
     </div>
   )
 }, {
-  Header: 'Station #',
-  id: 'lastName',
-  accessor: d => d.stationNumber
-},{
   Header: 'Vehical RFU Count',
   accessor: 'RFU_z',
-},{
+}, {
   Header: 'NR RFU Count',
   accessor: 'RFU_FHS',
-},{
+}, {
   Header: 'Refuels',
   accessor: 'refuels',
-},{
+}, {
   Header: 'Pauses',
   accessor: 'pauses',
-},{
+}, {
   Header: 'Pauses/Refuel Ratio',
   accessor: 'pausesRefuelRatio',
-},{
+}, {
   Header: 'Aver. Refuel Time(Sec)',
   accessor: 'averageRefuelTimeSec',
-},{
+}, {
   Header: 'Max NR Usage(Sec)',
   accessor: 'maxNRUsageSec',
-},{
+}, {
   Header: 'Aver. NR Usage(Sec)',
   accessor: 'averageNRUsageSec',
-},{
+}, {
   Header: 'System Version',
   accessor: 'systemVersion',
-},{
+}, {
   Header: 'Avar. Day Use(Sec)',
   accessor: 'avarageDayUseSec',
-},{
+}, {
   Header: 'Avar. Refuel Count/Day',
   accessor: 'averageRefuelCount_Day',
-},{
+}, {
   Header: 'Last Report Time',
   accessor: 'lastReportTime',
-},{
+}, {
   Header: 'HW Version',
   accessor: 'HWVersion',
 }]
@@ -100,12 +96,44 @@ const columns = [{
 class TestTable extends React.Component<TestTableProps, TestTableState> {
   constructor() {
     super();
-    // this.state = {
-    //   data: makeData()
-    // };
+    this.state = {
+
+      resized: []
+    };
   }
+
+  onTableScroll = (ev) => {
+    const tbody = ev.target;
+    const scrollTop = tbody.scrollTop;
+    if (scrollTop === 0 ) { //&& this.props.withTop) {
+
+      // if (true) { //(this.scrollingIntoViewTop) {
+      //   //this.scrollingIntoViewTop = false;
+      //   tbody.scrollTop =30; // SCROLLTOP_OVERHEAD;
+      // } else {
+      //  // this.firstChild = tbody.firstChild;
+      //  // // this.props.onTopReach();
+      //  //  if (!this.props.fetchedFirstPage) {
+      //  //    //
+      //  //    // At this point, reaching the top scroller position means fetching a descending (previous) page.
+      //  //    // We want to accommodate this behaviour by lowering the scroller position to an up-scrollable position,
+      //  //    // for smooth action:
+      //  //    //
+      //  //    tbody.scrollTop = 30; //SCROLLTOP_OVERHEAD;
+      //  //  }
+      // }
+      console.log('onTopReach')
+    }
+
+    if (tbody.scrollHeight - 70 < scrollTop + tbody.clientHeight) {
+     // this.firstChild = null;
+
+      console.log('onBottomReach')
+      //this.props.onBottomReach();
+    }
+  }
+
   render() {
-    // const { data } = this.state;
     return (
       <div>
         <ReactTable
@@ -119,13 +147,13 @@ class TestTable extends React.Component<TestTableProps, TestTableState> {
           className="-striped -highlight"
           SubComponent={row => {
             return (
-              <div style={{ padding: "20px" }}>
+              <div style={{padding: "20px"}}>
                 <em>
                   You can put any component you want here, even another React
                   Table!
                 </em>
-                <br />
-                <br />
+                <br/>
+                <br/>
                 <ReactTable
                   data={this.props.data}
                   columns={columns}
@@ -133,7 +161,7 @@ class TestTable extends React.Component<TestTableProps, TestTableState> {
                   showPagination={false}
                   SubComponent={row => {
                     return (
-                      <div style={{ padding: "20px" }}>
+                      <div style={{padding: "20px"}}>
                         Another Sub Component!
                       </div>
                     );
@@ -142,6 +170,37 @@ class TestTable extends React.Component<TestTableProps, TestTableState> {
               </div>
             );
           }}
+          onResizedChange={resized => this.setState({resized})}
+          onFetchData={ (ev: any) => console.log('event',ev)}
+          getTbodyProps={ (state, rowInfo, column, instance) =>{
+            return {
+              onScroll: (e ) => {
+                this.onTableScroll(e)
+               // console.log('onScroll', e.target.scrollTop)
+              }
+            }
+          }}
+          getTdProps={(state, rowInfo, column, instance) => {
+            return {
+              onClick: (e, handleOriginal) => {
+                console.log('A Td Element was clicked!')
+                console.log('it produced this event:', e)
+                console.log('It was in this column:', column)
+                console.log('It was in this row:', rowInfo)
+                console.log('It was in this table instance:', instance)
+
+                // IMPORTANT! React-Table uses onClick internally to trigger
+                // events like expanding SubComponents and pivots.
+                // By default a custom 'onClick' handler will override this functionality.
+                // If you want to fire the original onClick handler, call the
+                // 'handleOriginal' function.
+                if (handleOriginal) {
+                  handleOriginal()
+                }
+              }
+            }
+          }
+          }
         />
         {/*<br />*/}
         {/*<Tips />*/}

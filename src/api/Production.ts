@@ -43,15 +43,17 @@ class ProductionApi {
   }
 
   public generateApiURI(endpoint: string,
-                        query?: types.BrowserApiQuery |
-                          types.ImageApiQuery |
-                          types.TagsApiQuery |
-                          types.MarksApiQuery |
-                          types.LoginApiQuery |
-                          types.IMApiQuery) {
+                        query?: types.ApiQueryParams
+                      ) {
     query = query || {};
 
     return `${this.apiAddress}/${endpoint}?${qs.stringify(query)}`;
+  }
+
+  public fetchInventoryMain(meta: types.ProductMeta, query: types.ApiQueryParams): Promise<any> {
+    let uri = this.generateApiURI(`inventory`, query);
+
+    return Promise.resolve(this.get(uri)).then((result) => result.data);
   }
 
   // private delete(uri: string) {
@@ -73,11 +75,11 @@ class ProductionApi {
     return axios(request);
   }
 
-  // private get(uri: string) {
-  //   let headers = this.sessionToken ? {bearer: this.sessionToken} : null;
+  private get(uri: string) {
+    let headers = this.sessionToken ? {bearer: this.sessionToken} : null;
 
-  //   return (<any> axios)({method: 'GET', url: uri, headers: headers, json: true});
-  // }
+    return (<any> axios)({method: 'GET', url: uri, headers: headers, json: true});
+  }
 }
 
 export default ProductionApi;

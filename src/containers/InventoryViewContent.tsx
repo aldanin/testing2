@@ -17,6 +17,9 @@ export interface InventoryViewContentProps extends React.Props<InventoryViewCont
   isFetching: boolean,
   isError: boolean,
   getInventoryMainData: (filters?: Filters.FiltersData) => void,
+  getInventoryDeviceData: (stationId: RosemanTypes.RosemanID,
+                           deviceName: string,
+                           filters?: Filters.FiltersData) => void,
   employeeSummay?: EmployeeSummary.EmployeeSummary,
 }
 
@@ -39,9 +42,11 @@ class InventoryViewContent extends React.Component<InventoryViewContentProps, {}
     return (
       <InventoryView
         inventoryMainData={this.props.inventoryMainData}
+        onInventoryStationsTableRowExpanded={(stationId: RosemanTypes.RosemanID,
+                                              deviceName: string) =>
+          this.props.getInventoryDeviceData(stationId, deviceName, null)}
         employeeSummay={MockEmployeeSummary.getEmployeeSummary('3')}
         tasks={MockTasks.getTasksByAgentId('3').slice(0, 1000)}
-        onAbortTask={(id) => console.log('abort', id)}
         theme={theme.dashboardPage}
       />
     )
@@ -49,7 +54,7 @@ class InventoryViewContent extends React.Component<InventoryViewContentProps, {}
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state)
+
   const inventoryMainData = state[RosemanTypes.PRODUCT_TYPES.INVENTORY].get('inventoryMainData');
 
   const isFetching = state[RosemanTypes.PRODUCT_TYPES.INVENTORY].get('isFetching');
@@ -73,6 +78,12 @@ const mapDispatchToProps = (dispatch) => {
       (filters?: Filters.FiltersData) => {
         dispatch(actions.inventoryMainRequest(filters))
       },
+    getInventoryDeviceData: (stationId: RosemanTypes.RosemanID,
+                             deviceName: string,
+                             filters?: Filters.FiltersData) => {
+      dispatch(actions.inventoryDeviceRequest(stationId, deviceName, filters))
+    }
+
   }
 }
 

@@ -1,7 +1,5 @@
 import * as Roseman from './RosemanTypes'
-import NozzleReader from './NozzleReader'
-import CVS from './CVS'
-import RFU from './RFU'
+import InventoryStationaryDevices from './InventoryStationaryDevices'
 
 export interface StationInventorySummary {
   id: Roseman.RosemanID,
@@ -24,8 +22,8 @@ export interface StationInventorySummary {
   lastReportTime: Roseman.Date,
   HWVersion: string,
   devices?: {
-    nozzleReader?: NozzleReader[],
-    RFU?: RFU[],
-    CVS?: CVS[],
+    nozzleReader?: InventoryStationaryDevices[],
+    RFU?: InventoryStationaryDevices[],
+    CVS?: InventoryStationaryDevices[],
   }
 }

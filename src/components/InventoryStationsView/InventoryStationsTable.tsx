@@ -6,13 +6,19 @@ import {
 import { StationInventorySummary } from '../../types/StationInventorySummary'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import * as RosemanTypes from '../../types/RosemanTypes'
 import './index.css'
+import TabGeneric from '../../appWidgets/TabGeneric'
 
-export interface TestTableProps {
-  data: StationInventorySummary[]
+
+//import InventoryNozzleReadersTable from './InventoryNozzleReadersTable'
+
+export interface InventoryStationsTableProps {
+  data: StationInventorySummary[],
+  onRowExpanded: (stationId: RosemanTypes.RosemanID, deviceType: string) => void,
 }
 
-export interface TestTableState {
+export interface InventoryStationsTableState {
   resized: any[],
 }
 
@@ -93,7 +99,7 @@ const columns = [{
   accessor: 'HWVersion',
 }]
 
-class TestTable extends React.Component<TestTableProps, TestTableState> {
+class InventoryStationsTable extends React.Component<InventoryStationsTableProps, InventoryStationsTableState> {
   constructor() {
     super();
     this.state = {
@@ -102,10 +108,11 @@ class TestTable extends React.Component<TestTableProps, TestTableState> {
     };
   }
 
+
   onTableScroll = (ev) => {
     const tbody = ev.target;
     const scrollTop = tbody.scrollTop;
-    if (scrollTop === 0 ) { //&& this.props.withTop) {
+    if (scrollTop === 0) { //&& this.props.withTop) {
 
       // if (true) { //(this.scrollingIntoViewTop) {
       //   //this.scrollingIntoViewTop = false;
@@ -126,38 +133,57 @@ class TestTable extends React.Component<TestTableProps, TestTableState> {
     }
 
     if (tbody.scrollHeight - 70 < scrollTop + tbody.clientHeight) {
-     // this.firstChild = null;
+      // this.firstChild = null;
 
       console.log('onBottomReach')
       //this.props.onBottomReach();
     }
   }
 
+  onDeviceSelected = (deviceName: string) => {
+
+  }
+
   render() {
+    const viewerModeTabs = [{
+      title: 'Nozzle Readers',
+      callback: () => this.onDeviceSelected('All'),
+    }, {
+      title: 'RFU',
+      callback: () => this.onDeviceSelected('PazInc'),
+    }, {
+      title: 'CVS',
+      callback: () => this.onDeviceSelected('DorAlon'),
+    }];
+
     return (
-      <div>
+      <div style={{height: '100%'}}>
         <ReactTable
           data={this.props.data}
 
           columns={columns}
           defaultPageSize={20}
           style={{
-            height: "400px" // This will force the table body to overflow and scroll, since there is not enough room
+            height: "calc(100% - 20px)"
           }}
           className="-striped -highlight"
           SubComponent={row => {
+            // const rowData = row.original || {};
             return (
-              <div style={{padding: "20px"}}>
-                <em>
-                  You can put any component you want here, even another React
-                  Table!
-                </em>
-                <br/>
-                <br/>
+              <div style={{
+                margin: '20px',
+                backgroundColor: '#e1eef3',
+                border: 'solid 1px silver',
+                padding: '10px'
+              }}>
+                <TabGeneric
+                  tabs={viewerModeTabs}
+                  initialSelectedIndex={1}
+                />
                 <ReactTable
                   data={this.props.data}
                   columns={columns}
-                  defaultPageSize={3}
+                  defaultPageSize={20}
                   showPagination={false}
                   SubComponent={row => {
                     return (
@@ -171,24 +197,26 @@ class TestTable extends React.Component<TestTableProps, TestTableState> {
             );
           }}
           onResizedChange={resized => this.setState({resized})}
-          onFetchData={ (ev: any) => console.log('event',ev)}
-          getTbodyProps={ (state, rowInfo, column, instance) =>{
+          onFetchData={(ev: any) => console.log('event', ev)}
+          getTbodyProps={(state, rowInfo, column, instance) => {
             return {
-              onScroll: (e ) => {
+              onScroll: (e) => {
                 this.onTableScroll(e)
-               // console.log('onScroll', e.target.scrollTop)
+                // console.log('onScroll', e.target.scrollTop)
               }
             }
           }}
-          getTdProps={(state, rowInfo, column, instance) => {
+          getTdProps={(state, rowInfo, column, instance, handleOriginal) => {
+            const rowData = rowInfo ? rowInfo.original : null;
             return {
               onClick: (e, handleOriginal) => {
                 console.log('A Td Element was clicked!')
                 console.log('it produced this event:', e)
                 console.log('It was in this column:', column)
-                console.log('It was in this row:', rowInfo)
+                console.log('It was in this row:', rowData, rowInfo)
                 console.log('It was in this table instance:', instance)
 
+                this.props.onRowExpanded(rowData.stationId, 'nozzleReader')
                 // IMPORTANT! React-Table uses onClick internally to trigger
                 // events like expanding SubComponents and pivots.
                 // By default a custom 'onClick' handler will override this functionality.
@@ -210,4 +238,4 @@ class TestTable extends React.Component<TestTableProps, TestTableState> {
   }
 }
 
-export default TestTable;
+export default InventoryStationsTable;

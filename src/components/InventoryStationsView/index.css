@@ -1,3 +1,7 @@
+.ReactTable {
+  background-color: white;
+}
+
 .ReactTable .rt-thead {
   /*overflow-y: scroll;*/
 }
@@ -8,4 +12,8 @@
 
 .ReactTable .rt-tbody .rt-tr {
   height: 45px;
+}
+
+.ReactTable.-striped .rt-tr.-odd {
+  background-color: inherit;
 }

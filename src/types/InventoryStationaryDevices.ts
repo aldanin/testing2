@@ -1,8 +1,8 @@
 import * as Roseman from './RosemanTypes'
 
-export interface InventoryStationaryDevices {
+export default interface InventoryStationaryDevices {
   stationId: Roseman.RosemanID,
   stationName: string,
-  devices: any[],
+  devices: Roseman.StationaryDevice[],
   totalItems: number,
 }

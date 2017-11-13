@@ -1,4 +1,3 @@
-import * as Roseman from './RosemanTypes'
 import DeviceBase from './DeviceBase'
 
 export default interface StationaryDeviceBase extends DeviceBase {

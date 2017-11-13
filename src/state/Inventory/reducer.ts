@@ -28,7 +28,15 @@ export const initialState: State = Immutable.fromJS({
 // based on a token being in local storage. In a real app,
 // we would also want a util to check if the token is expired.
 function inventory(state: State = initialState, action: Action) {
+  let data;
+  let immutableData;
+
   switch (action.type) {
+    case Actions.INVENTORY_FAIL:
+      const error = (<Actions.InventoryMainFailAction> action).error;
+      return state
+        .set('error', error)
+        .set('isFetching', false);
     case Actions.INVENTORY_MAIN_REQUEST:
       const {filters} =
         (<Actions.InventoryMainRequestAction> action).payload;
@@ -38,19 +46,23 @@ function inventory(state: State = initialState, action: Action) {
         .set('isFetching', true);
     case  Actions.INVENTORY_MAIN_SUCCESS:
 
-      const {data} =
-        (<Actions.InventoryMainSuccessAction> action).payload;
-      const immutableData = Immutable.fromJS(data);
+      data = (<Actions.InventoryMainSuccessAction> action).payload.data;
+      console.log('data===>',data)
+      immutableData = Immutable.fromJS(data);
 
       return state
         .set('inventoryMainData', immutableData)
         .set('error', false)
         .set('isFetching', false);
-    case Actions.INVENTORY_MAIN_FAIL:
-      const error = (<Actions.InventoryMainFailAction> action).error;
-      return state
-        .set('error', error)
-        .set('isFetching', false);
+    // case  Actions.INVENTORY_DEVICE_SUCCESS:
+    //
+    //   data = (<Actions.InventoryDeviceSuccessAction> action).payload;
+    //   immutableData = Immutable.fromJS(data);
+    //
+    //   return state
+    //     .set('inventoryMainData', immutableData)
+    //     .set('error', false)
+    //     .set('isFetching', false);
     default:
       return state
   }

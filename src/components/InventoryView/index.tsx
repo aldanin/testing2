@@ -12,12 +12,16 @@ import * as Task from '../../types/Task'
 import * as TaskBasics from '../../types/TaskBasics'
 import * as moment from 'moment'
 import TabstripComponent from '../../appWidgets/TabstripComponent'
+import * as RosemanTypes from '../../types/RosemanTypes'
+
 
 export interface InventoryViewProps extends React.Props<InventoryView> {
   inventoryMainData: InventoryMain,
+  onInventoryStationsTableRowExpanded: (stationId: RosemanTypes.RosemanID,
+                                        deviceType: string) => void,
   employeeSummay: EmployeeSummary.EmployeeSummary
   tasks: Task.Task[],
-  onAbortTask: (taskId:string) => void,
+
   theme?: Theme.ThemeProps;
 }
 
@@ -26,7 +30,7 @@ export interface InventoryViewState {
   currentDisplayDatesSpanFactor: number,
 }
 
-const HEADER_HEIGHT = '210px';
+const HEADER_HEIGHT = '0px';
 const HEADER_INNER_TOTAL_MARGINS = '250px';
 const TAB_HEIGHT = '50px';
 
@@ -45,6 +49,7 @@ const InventoryViewHeader = styled.div`
   justify-content: space-between;
   background: ${props => props.theme.headerBackground};
   border-bottom: solid 1px ${props => props.theme.commonBorderColor};
+  display: none;
 `;
 
 const StatusCardContainer = styled.div`
@@ -129,17 +134,17 @@ class InventoryView extends React.Component<InventoryViewProps, InventoryViewSta
   //
   getTabs = () => {
     const viewerModeTabs = [{
-      title: 'Summary',
+      title: 'Dashboard',
       callback: () => {
         this.setState({selectedTabIndex: 0})
       },
     }, {
-      title: 'Calendar',
+      title: 'Inventory',
       callback: () => {
         this.setState({selectedTabIndex: 1})
       },
     }, {
-      title: 'Tasks',
+      title: 'Reports',
       callback: () => {
         this.setState({selectedTabIndex: 2})
       },
@@ -162,18 +167,19 @@ class InventoryView extends React.Component<InventoryViewProps, InventoryViewSta
         </ViewWrap>
       ),
       <ViewWrap key={2}>
-        <DashboardCalendarView
-          tasks={this.props.tasks}
-          theme={this.props.theme.calendarView}
+        <InventoryStationsView
+          inventoryMainData={this.props.inventoryMainData}
+          onInventoryStationsTableRowExpanded={this.props.onInventoryStationsTableRowExpanded}
+          theme={this.props.theme.tasksView}
         />
       </ViewWrap>,
       (
         <ViewWrap key={3}>
-          <InventoryStationsView
-            inventoryMainData={this.props.inventoryMainData}
-            onAbortTask={this.props.onAbortTask}
-            theme={this.props.theme.tasksView}
+          <DashboardCalendarView
+            tasks={this.props.tasks}
+            theme={this.props.theme.calendarView}
           />
+
         </ViewWrap>
       ),
     ]

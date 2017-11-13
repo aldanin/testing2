@@ -4,12 +4,13 @@ import styled, { ThemeProvider } from 'styled-components';
 import {InventoryMain} from '../../types/InventoryData'
 import  * as TaskBasics from '../../types/TaskBasics'
 import ControlStrip from '../DashboardControlStrip'
-import TestTable from './table_test'
+import InventoryStationsTable from './InventoryStationsTable'
 import * as Task from '../../types/Task'
+import * as RosemanTypes from '../../types/RosemanTypes'
 
 export interface InventoryStationsViewProps extends React.Props<InventoryStationsView> {
   inventoryMainData: InventoryMain,
-  onAbortTask: (taskId: string) => void;
+  onInventoryStationsTableRowExpanded: (stationId: RosemanTypes.RosemanID, deviceType: string) => void
   theme: Theme.ThemeProps;
 }
 
@@ -29,7 +30,7 @@ const MainPartWrap = styled.div`
   margin-top: 40px;
   width: calc(100% - 60px);
   margin: 30px auto 0 auto;
-  overflow: auto; 
+  // overflow: auto; 
 `;
 
 class InventoryStationsView extends React.Component<InventoryStationsViewProps, InventoryStationsViewState> {
@@ -96,8 +97,9 @@ class InventoryStationsView extends React.Component<InventoryStationsViewProps, 
             theme={this.props.theme.controlStrip}
           />
           <MainPartWrap>
-            <TestTable
+            <InventoryStationsTable
               data={this.props.inventoryMainData.stations}
+              onRowExpanded={this.props.onInventoryStationsTableRowExpanded}
             />
             {/*<TasksList*/}
               {/*data={tasks}*/}

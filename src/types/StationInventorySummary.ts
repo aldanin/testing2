@@ -1,22 +1,23 @@
 import * as Roseman from './RosemanTypes'
 
 export interface StationInventorySummary {
-  id: Roseman.rosemanId,
-  customerId:  Roseman.rosemanId,
+  id: Roseman.RosemanID,
+  customerId:  Roseman.RosemanID,
   customerName: string,
-  stationId: Roseman.rosemanId,
+  stationId: Roseman.RosemanID,
   stationName: string,
   NRCount: number,
   RFU_z: number,
   RFU_FHS: number,
   refuels: number,
-  Pauses: number,
+  pauses: number,
   pausesRefuelRatio: number,
   averageRefuelTimeSec: number,
   maxNRUsageSec: number,
+  averageNRUsageSec: number,
   systemVersion: string,
   avarageDayUseSec: number,
   averageRefuelCount_Day: number,
-  lastReportTime: number // Server sends date string,
+  lastReportTime: Roseman.Date,
   HWVersion: string,
 }

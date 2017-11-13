@@ -96,7 +96,9 @@ class InventoryStationsView extends React.Component<InventoryStationsViewProps, 
             theme={this.props.theme.controlStrip}
           />
           <MainPartWrap>
-            <TestTable/>
+            <TestTable
+              data={this.props.inventoryReport.stations}
+            />
             {/*<TasksList*/}
               {/*data={tasks}*/}
               {/*theme={this.props.theme.tasksList}*/}

@@ -1,1 +1,3 @@
-export type rosemanId = number;
+export type RosemanID = number;
+export type Date = string;
+export type ClientGuid = string;

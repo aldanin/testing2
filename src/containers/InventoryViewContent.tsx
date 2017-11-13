@@ -6,7 +6,7 @@ import * as EmployeeSummary from '../types/EmployeeSummary'
 import * as MockEmployeeSummary from '../mockData/EmployeeSummary'
 import * as MockTasks from '../mockData/Tasks'
 import { InventoryReport } from '../types/InventoryReport'
-
+import * as Mock from '../mockData/InventoryReport'
 
 
 
@@ -30,7 +30,7 @@ class DashboardContent extends React.Component<DashboardContentProps, {}> {
   render() {
     return (
       <InventoryView
-        inventoryReport = {this.props.inventoryReport}
+        inventoryReport = {Mock.inventoryReport}
         employeeSummay={MockEmployeeSummary.getEmployeeSummary('3')}
         tasks={MockTasks.getTasksByAgentId('3').slice(0, 1000)}
         onAbortTask={(id) => console.log('abort', id)}

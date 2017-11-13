@@ -1,28 +1,35 @@
 import * as React from "react";
 import {
-  makeData,
+  // makeData,
   // Logo,
   // Tips
 } from "./utils";
-
-// Import React Table
+import { StationInventorySummary } from '../../types/StationInventorySummary'
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
+export interface TestTableProps {
+  data: StationInventorySummary[]
+}
+
 export interface TestTableState{
-  data: any
+  data: StationInventorySummary[]
 }
 
 const columns = [{
-  Header: 'First Name',
-  accessor: 'firstName'
+  Header: 'Customer Name',
+  accessor: 'customerName'
 }, {
-  Header: 'Last Name',
+  Header: 'Station Name',
   id: 'lastName',
-  accessor: d => d.lastName
+  accessor: d => d.stationName
+},{
+  Header: 'Station #',
+  id: 'lastName',
+  accessor: d => d.stationNumber
 }, {
-  Header: 'Profile Progress',
-  accessor: 'progress',
+  Header: 'Nozzle Reader Count',
+  accessor: 'NRCount',
   Cell: row => (
     <div
       style={{
@@ -46,39 +53,63 @@ const columns = [{
     </div>
   )
 }, {
-  Header: 'Status',
-  accessor: 'status',
-  Cell: row => (
-    <span>
-            <span style={{
-              color: row.value === 'relationship' ? '#ff2e00'
-                : row.value === 'complicated' ? '#ffbf00'
-                  : '#57d500',
-              transition: 'all .3s ease'
-            }}>
-              &#x25cf;
-            </span> {
-      row.value === 'relationship' ? 'In a relationship'
-        : row.value === 'complicated' ? `It's complicated`
-        : 'Single'
-    }
-          </span>
-  )
+  Header: 'Station #',
+  id: 'lastName',
+  accessor: d => d.stationNumber
+},{
+  Header: 'Vehical RFU Count',
+  accessor: 'RFU_z',
+},{
+  Header: 'NR RFU Count',
+  accessor: 'RFU_FHS',
+},{
+  Header: 'Refuels',
+  accessor: 'refuels',
+},{
+  Header: 'Pauses',
+  accessor: 'pauses',
+},{
+  Header: 'Pauses/Refuel Ratio',
+  accessor: 'pausesRefuelRatio',
+},{
+  Header: 'Aver. Refuel Time(Sec)',
+  accessor: 'averageRefuelTimeSec',
+},{
+  Header: 'Max NR Usage(Sec)',
+  accessor: 'maxNRUsageSec',
+},{
+  Header: 'Aver. NR Usage(Sec)',
+  accessor: 'averageNRUsageSec',
+},{
+  Header: 'System Version',
+  accessor: 'systemVersion',
+},{
+  Header: 'Avar. Day Use(Sec)',
+  accessor: 'avarageDayUseSec',
+},{
+  Header: 'Avar. Refuel Count/Day',
+  accessor: 'averageRefuelCount_Day',
+},{
+  Header: 'Last Report Time',
+  accessor: 'lastReportTime',
+},{
+  Header: 'HW Version',
+  accessor: 'HWVersion',
 }]
 
-class TestTable extends React.Component<{}, TestTableState> {
+class TestTable extends React.Component<TestTableProps, TestTableState> {
   constructor() {
     super();
-    this.state = {
-      data: makeData()
-    };
+    // this.state = {
+    //   data: makeData()
+    // };
   }
   render() {
-    const { data } = this.state;
+    // const { data } = this.state;
     return (
       <div>
         <ReactTable
-          data={data}
+          data={this.props.data}
 
           columns={columns}
           defaultPageSize={20}
@@ -96,7 +127,7 @@ class TestTable extends React.Component<{}, TestTableState> {
                 <br />
                 <br />
                 <ReactTable
-                  data={data}
+                  data={this.props.data}
                   columns={columns}
                   defaultPageSize={3}
                   showPagination={false}

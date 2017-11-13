@@ -1,6 +1,6 @@
 import { StationInventorySummary } from './StationInventorySummary'
 
-export interface InventoryReport {
+export default interface InventoryReport {
   stations: StationInventorySummary[],
   totalItems: number,
   pageNumber: number,

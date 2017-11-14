@@ -112,7 +112,7 @@ class InventoryView extends React.Component<InventoryViewProps, InventoryViewSta
     super(props);
 
     this.state = {
-      selectedTabIndex: 1,
+      selectedTabIndex: 2,
       currentDisplayDatesSpanFactor: 24
     }
 

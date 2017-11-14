@@ -9,6 +9,7 @@ import 'react-table/react-table.css';
 import * as RosemanTypes from '../../types/RosemanTypes'
 import './index.css'
 import TabGeneric from '../../appWidgets/TabGeneric'
+import InventoryNozzleReadersTable from './InventoryNozzleReadersTable'
 
 
 //import InventoryNozzleReadersTable from './InventoryNozzleReadersTable'
@@ -145,6 +146,7 @@ class InventoryStationsTable extends React.Component<InventoryStationsTableProps
   }
 
   render() {
+    console.log('rendered')
     const viewerModeTabs = [{
       title: 'Nozzle Readers',
       callback: () => this.onDeviceSelected('All'),
@@ -168,7 +170,8 @@ class InventoryStationsTable extends React.Component<InventoryStationsTableProps
           }}
           className="-striped -highlight"
           SubComponent={row => {
-            // const rowData = row.original || {};
+            const rowItem = row.original || {devices:{}};
+            console.log('row===>', row)
             return (
               <div style={{
                 margin: '20px',
@@ -180,24 +183,15 @@ class InventoryStationsTable extends React.Component<InventoryStationsTableProps
                   tabs={viewerModeTabs}
                   initialSelectedIndex={1}
                 />
-                <ReactTable
-                  data={this.props.data}
-                  columns={columns}
-                  defaultPageSize={20}
-                  showPagination={false}
-                  SubComponent={row => {
-                    return (
-                      <div style={{padding: "20px"}}>
-                        Another Sub Component!
-                      </div>
-                    );
-                  }}
-                />
+                <InventoryNozzleReadersTable
+                  data={rowItem.devices.NozzleReader}
+                 />
               </div>
             );
           }}
           onResizedChange={resized => this.setState({resized})}
           onFetchData={(ev: any) => console.log('event', ev)}
+
           getTbodyProps={(state, rowInfo, column, instance) => {
             return {
               onScroll: (e) => {
@@ -207,22 +201,24 @@ class InventoryStationsTable extends React.Component<InventoryStationsTableProps
             }
           }}
           getTdProps={(state, rowInfo, column, instance, handleOriginal) => {
-            const rowData = rowInfo ? rowInfo.original : null;
+            //const rowData = rowInfo ? rowInfo.original : null;
             return {
               onClick: (e, handleOriginal) => {
-                console.log('A Td Element was clicked!')
-                console.log('it produced this event:', e)
-                console.log('It was in this column:', column)
-                console.log('It was in this row:', rowData, rowInfo)
-                console.log('It was in this table instance:', instance)
+                // console.log('A Td Element was clicked!')
+                // console.log('it produced this event:', e)
+                // console.log('It was in this column:', column)
+                // console.log('It was in this row:', rowData, rowInfo)
+                // console.log('It was in this table instance:', instance)
 
-                this.props.onRowExpanded(rowData.stationId, 'nozzleReader')
+              this.props.onRowExpanded(1, 'NozzleReader')
                 // IMPORTANT! React-Table uses onClick internally to trigger
                 // events like expanding SubComponents and pivots.
                 // By default a custom 'onClick' handler will override this functionality.
                 // If you want to fire the original onClick handler, call the
                 // 'handleOriginal' function.
+
                 if (handleOriginal) {
+                  // console.log('handleOriginal1',handleOriginal)
                   handleOriginal()
                 }
               }

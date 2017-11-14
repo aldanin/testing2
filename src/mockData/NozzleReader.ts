@@ -1,10 +1,12 @@
-// import * as NozzleReader from '../types/NozzleReader'
+// import NozzleReader from '../types/NozzleReader'
 import * as Filters from '../types/Filters'
 import { RosemanID } from "../types/RosemanTypes";
+import InventoryStationaryDevices from '../types/InventoryStationaryDevices'
 
-const DATA = {
-  "stationId": null,
+const DATA: InventoryStationaryDevices = {
+  "stationId": 405,
   "stationName": null,
+  "deviceType": "NozzleReader",
   "devices": [{
     "customerId": 3,
     "customerName": null,
@@ -626,7 +628,7 @@ const DATA = {
       "customerId": 3
     }
   }],
-  "totalItems": 0
+  "totalItems": 20
 }
 
 // DATA.stations.forEach(station => {

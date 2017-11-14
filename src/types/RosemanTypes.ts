@@ -8,5 +8,6 @@ export type ClientGuid = string;
 export type StationaryDevice = NozzleReader | CVS | RFU;
 
 export const PRODUCT_TYPES = {
-  INVENTORY: 'Inventory',
+  INVENTORY_MAIN: 'InventoryMain',
+  INVENTORY_DEVICE: 'InventoryDevice',
 }

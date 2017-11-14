@@ -5,7 +5,7 @@ import { PRODUCT_TYPES } from '../types/RosemanTypes'
 
 const rootReducer = combineReducers({
   session,
-  [PRODUCT_TYPES.INVENTORY]: inventory,
+  [PRODUCT_TYPES.INVENTORY_MAIN]: inventory,
 })
 
 export default rootReducer

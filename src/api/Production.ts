@@ -56,6 +56,12 @@ class ProductionApi {
     return Promise.resolve(this.get(uri)).then((result) => result.data);
   }
 
+  public fetchInventoryDevice(meta: types.ProductMeta, query: types.InventoryDeviceApiQuery): Promise<any> {
+    let uri = this.generateApiURI(`inventory`, query);
+
+    return Promise.resolve(this.get(uri)).then((result) => result.data);
+  }
+
   // private delete(uri: string) {
   //   let headers = this.sessionToken ? {bearer: this.sessionToken} : null;
 

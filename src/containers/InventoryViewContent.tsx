@@ -54,12 +54,11 @@ class InventoryViewContent extends React.Component<InventoryViewContentProps, {}
 }
 
 const mapStateToProps = (state, ownProps) => {
+  const inventoryMainData = state[RosemanTypes.PRODUCT_TYPES.INVENTORY_MAIN].get('inventoryMainData');
 
-  const inventoryMainData = state[RosemanTypes.PRODUCT_TYPES.INVENTORY].get('inventoryMainData');
-
-  const isFetching = state[RosemanTypes.PRODUCT_TYPES.INVENTORY].get('isFetching');
-  const isError = state[RosemanTypes.PRODUCT_TYPES.INVENTORY].get('isError');
-  const inventoryMainFilters = state[RosemanTypes.PRODUCT_TYPES.INVENTORY].get('inventoryMainFilters');
+  const isFetching = state[RosemanTypes.PRODUCT_TYPES.INVENTORY_MAIN].get('isFetching');
+  const isError = state[RosemanTypes.PRODUCT_TYPES.INVENTORY_MAIN].get('isError');
+  const inventoryMainFilters = state[RosemanTypes.PRODUCT_TYPES.INVENTORY_MAIN].get('inventoryMainFilters');
 
   const inventoryMainDataJS = inventoryMainData.toJS();
 

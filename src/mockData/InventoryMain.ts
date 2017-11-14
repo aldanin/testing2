@@ -4507,9 +4507,9 @@ const DATA: InventoryData.InventoryMain = {
 
 DATA.stations.forEach(station => {
   station.devices = {
-    nozzleReader: [],
-    RFU: [],
-    CVS: [],
+    NozzleReader: null,
+    RFU: null,
+    CVS: null,
   }
 })
 

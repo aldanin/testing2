@@ -30,6 +30,10 @@ export const initialState: State = Immutable.fromJS({
 function inventory(state: State = initialState, action: Action) {
   let data;
   let immutableData;
+  let filters;
+  // let station;
+  // let stationId;
+  let index;
 
   switch (action.type) {
     case Actions.INVENTORY_FAIL:
@@ -38,7 +42,7 @@ function inventory(state: State = initialState, action: Action) {
         .set('error', error)
         .set('isFetching', false);
     case Actions.INVENTORY_MAIN_REQUEST:
-      const {filters} =
+      filters =
         (<Actions.InventoryMainRequestAction> action).payload;
       return state
         .set('inventoryMainFilters', filters)
@@ -47,11 +51,31 @@ function inventory(state: State = initialState, action: Action) {
     case  Actions.INVENTORY_MAIN_SUCCESS:
 
       data = (<Actions.InventoryMainSuccessAction> action).payload.data;
-      console.log('data===>',data)
       immutableData = Immutable.fromJS(data);
 
       return state
         .set('inventoryMainData', immutableData)
+        .set('error', false)
+        .set('isFetching', false);
+    // case Actions.INVENTORY_DEVICE_REQUEST:
+    //   filters =
+    //     (<Actions.InventoryDeviceRequestAction> action).payload;
+    //   return state
+    //     .set('inventoryDeviceFilters', filters)
+    //     .set('error', false)
+    //     .set('isFetching', true);
+    case  Actions.INVENTORY_DEVICE_SUCCESS:
+
+      data = (<Actions.InventoryDeviceSuccessAction> action).payload.data;
+
+      index = state.getIn(['inventoryMainData', 'stations']).findIndex(station => {
+        return station.get('stationId') === data.stationId;
+      })
+
+      immutableData = Immutable.fromJS(data);
+
+      return state
+        .setIn(['inventoryMainData', 'stations', index, 'devices', data.deviceType], immutableData)
         .set('error', false)
         .set('isFetching', false);
     // case  Actions.INVENTORY_DEVICE_SUCCESS:

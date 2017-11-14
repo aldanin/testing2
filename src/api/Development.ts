@@ -1,6 +1,9 @@
 import * as types from './types';
 import ProductionApi from './Production';
 import { getInventoryMainData } from '../mockData/InventoryMain'
+import { getNozzleReaderData } from '../mockData/NozzleReader'
+import { getRFUData } from '../mockData/RFU'
+import { getCVSData } from '../mockData/CVS'
 import * as InventoryData from '../types/InventoryData'
 
 // import { AxiosPromise } from 'axios';
@@ -33,6 +36,27 @@ class MockApi implements Partial<ProductionApi> {
 
   public fetchInventoryMain(meta: types.ProductMeta, query: types.ApiQueryParams): Promise<any> {
     return (getMockData(getInventoryMainData(query.filters)) as Promise<InventoryData.InventoryMain>);
+  }
+
+  public fetchInventoryDevice(meta: types.ProductMeta, query: types.InventoryDeviceApiQuery): Promise<any> {
+    let request;
+    switch(query.deviceType) {
+      case 'NozzleReader':
+        request =
+          getMockData(getNozzleReaderData(query.stationId, query.filters)) as Promise<InventoryData.InventoryMain>;
+        break;
+      case 'RFU':
+        request =
+          getMockData(getRFUData(query.stationId, query.filters)) as Promise<InventoryData.InventoryMain>;
+        break;
+      case 'CVS':
+        request =
+          getMockData(getCVSData(query.stationId, query.filters)) as Promise<InventoryData.InventoryMain>;
+        break;
+      default:
+        break;
+    }
+    return request;
   }
 }
 

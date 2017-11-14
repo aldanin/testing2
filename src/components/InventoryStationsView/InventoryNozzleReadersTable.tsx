@@ -7,9 +7,12 @@ import NozzleReader from '../../types/NozzleReader'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import './index.css'
+//import { RosemanID } from "../../types/RosemanTypes";
 
 export interface InventoryNozzleReadersTableProps {
-  data: NozzleReader[]
+  //currentStationId?: RosemanID,
+  data: NozzleReader[],
+  //loadData: (stationId: RosemanID, deviceType: string) => void,
 }
 
 export interface InventoryNozzleReadersTableState {
@@ -17,63 +20,59 @@ export interface InventoryNozzleReadersTableState {
 }
 
 const columns = [{
-  Header: 'Customer Name',
-  accessor: 'customerName'
+  Header: 'Pump #',
+  accessor: 'pumpNo'
 }, {
-  Header: 'Station Name',
-  id: 'stationName',
-  accessor: d => d.stationName
+  Header: 'Nozzle #',
+  id: 'nozzleNo',
+  accessor: d => d.nozzleNo
 }, {
-  Header: 'Station #',
-  id: 'stationId',
-  accessor: d => d.stationId
+  Header: 'Iron Number',
+  id: 'ironNumber',
+  accessor: d => d.ironNumber
 }, {
-  Header: 'Nozzle Reader Count',
-  accessor: 'NRCount',
+  Header: 'Status',
+  accessor: 'status',
 }, {
-  Header: 'Vehical RFU Count',
-  accessor: 'RFU_z',
+  Header: 'First Usage',
+  accessor: 'firstUsage',
 }, {
-  Header: 'NR RFU Count',
-  accessor: 'RFU_FHS',
+  Header: 'Last Report',
+  accessor: 'lastReport',
 }, {
-  Header: 'Refuels',
-  accessor: 'refuels',
+  Header: 'Nozzle Model Name',
+  accessor: 'nozzleModelName',
 }, {
-  Header: 'Pauses',
-  accessor: 'pauses',
+  Header: 'HW Type',
+  accessor: 'HWType',
 }, {
-  Header: 'Pauses/Refuel Ratio',
-  accessor: 'pausesRefuelRatio',
+  Header: 'HW Name',
+  accessor: 'HWName',
 }, {
-  Header: 'Aver. Refuel Time(Sec)',
-  accessor: 'averageRefuelTimeSec',
-}, {
-  Header: 'Max NR Usage(Sec)',
-  accessor: 'maxNRUsageSec',
-}, {
-  Header: 'Aver. NR Usage(Sec)',
-  accessor: 'averageNRUsageSec',
-}, {
-  Header: 'System Version',
-  accessor: 'systemVersion',
+  Header: 'Battery Voltage',
+  accessor: 'batteryVoltage',
 }, {
   Header: 'Avar. Day Use(Sec)',
   accessor: 'avarageDayUseSec',
 }, {
-  Header: 'Avar. Refuel Count/Day',
-  accessor: 'averageRefuelCount_Day',
+  Header: 'Total Usage(Sec)',
+  accessor: 'totalUsageTimeSec',
 }, {
-  Header: 'Last Report Time',
-  accessor: 'lastReportTime',
+  Header: 'Refuels',
+  accessor: 'refuels',
 }, {
-  Header: 'HW Version',
-  accessor: 'HWVersion',
+  Header: 'Fuel Type',
+  accessor: 'fuelType',
 }]
 
 class InventoryNozzleReadersTable extends React.Component<
   InventoryNozzleReadersTableProps,
   InventoryNozzleReadersTableState> {
+  static defaultProps: Partial<InventoryNozzleReadersTableProps> = {
+   // currentStationId: -1,
+    data: [],
+  };
+
   constructor() {
     super();
     this.state = {
@@ -117,7 +116,7 @@ class InventoryNozzleReadersTable extends React.Component<
     return (
       <div>
         <ReactTable
-          data={this.props.data}
+          data={this.props.data || []}
 
           columns={columns}
           defaultPageSize={20}
@@ -135,7 +134,7 @@ class InventoryNozzleReadersTable extends React.Component<
                 <br/>
                 <br/>
                 <ReactTable
-                  data={this.props.data}
+                  data={[]}
                   columns={columns}
                   defaultPageSize={10}
                   showPagination={false}
@@ -151,7 +150,6 @@ class InventoryNozzleReadersTable extends React.Component<
             );
           }}
           onResizedChange={resized => this.setState({resized})}
-          onFetchData={ (ev: any) => console.log('event',ev)}
           getTbodyProps={ (state, rowInfo, column, instance) =>{
             return {
               onScroll: (e ) => {

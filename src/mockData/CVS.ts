@@ -3,8 +3,9 @@ import * as Filters from '../types/Filters'
 import { RosemanID } from "../types/RosemanTypes";
 
 const DATA = {
-  "stationId": null,
-  "stationName": null,
+  "stationId": 405,
+  "stationName": "אשקלון",
+  "deviceType": "CVS",
   "devices": [{
     "customerId": 3,
     "customerName": null,
@@ -46,6 +47,6 @@ const DATA = {
 //   }
 // })
 
-export const getNozzleReaderData = (stationId: RosemanID, filters: Filters.FiltersData) => {
+export const getCVSData = (stationId: RosemanID, filters: Filters.FiltersData) => {
   return DATA;
 }

@@ -11,14 +11,14 @@ import './index.css'
 import TabGeneric from '../../appWidgets/TabGeneric'
 
 
-//import InventoryNozzleReadersTable from './InventoryNozzleReadersTable'
+//import MainNozzleReadersTable from './MainNozzleReadersTable'
 
-export interface InventoryStationsTableProps {
+export interface MainStationsTableProps {
   data: StationInventorySummary[],
   onRowExpanded: (stationId: RosemanTypes.RosemanID, deviceType: string) => void,
 }
 
-export interface InventoryStationsTableState {
+export interface MainStationsTableState {
   resized: any[],
 }
 
@@ -99,7 +99,7 @@ const columns = [{
   accessor: 'HWVersion',
 }]
 
-class InventoryStationsTable extends React.Component<InventoryStationsTableProps, InventoryStationsTableState> {
+class MainStationsTable extends React.Component<MainStationsTableProps, MainStationsTableState> {
   constructor() {
     super();
     this.state = {
@@ -238,4 +238,4 @@ class InventoryStationsTable extends React.Component<InventoryStationsTableProps
   }
 }
 
-export default InventoryStationsTable;
+export default MainStationsTable;

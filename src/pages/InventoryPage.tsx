@@ -15,6 +15,7 @@ const Label = styled.span`
 `
 
 interface InventoryPageProps {
+
 }
 
 const renderHeader = () => {
@@ -38,7 +39,7 @@ const renderHeader = () => {
   )
 }
 
-const InventoryPage: React.SFC<InventoryPageProps> = () => {
+const InventoryPage: React.SFC<InventoryPageProps> = (props: InventoryPageProps) => {
   return (
     <DefaultLayout
       header={renderHeader()}

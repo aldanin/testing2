@@ -14,8 +14,10 @@ export default (
     <Route path="/login" component={LoginPage} />
     <Route component={RequireAuthWrapper}>
       <IndexRoute component={InventoryPage}/>
-      <Route path="/emp/:employee_id" component={InventoryPage} />
-      <Route path={`/emp/:employee_id/${ViewPage.INVENTORY}`} component={InventoryPage} />
+      <Route path="/emp/:employee_id" component={InventoryPage}/>
+      <Route path={`/emp/:employee_id/${ViewPage.DASHBOARD}`} component={InventoryPage}/>
+      <Route path={`/emp/:employee_id/${ViewPage.INVENTORY}`} component={InventoryPage}/>
+      <Route path={`/emp/:employee_id/${ViewPage.REPORTS}`} component={InventoryPage}/>
     </Route>
     <Route path="*" component={NotFoundPage} />
   </Route >

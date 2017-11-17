@@ -233,7 +233,7 @@ class InventoryView extends React.Component<InventoryViewProps, InventoryViewSta
               <TabstripComponent
                 tabs={this.getTabs()}
                 views={this.getViews()}
-                selectedTabIndex={2}
+                selectedTabIndex={1}
                 tabHeight={TAB_HEIGHT}
                 theme={this.props.theme.mainTabstrip}
               />

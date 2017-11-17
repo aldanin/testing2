@@ -3,22 +3,16 @@ import {
   // Logo,
   // Tips
 } from "./utils";
-import { StationInventorySummary } from '../../types/StationInventorySummary'
+import NozzleReader from '../../types/NozzleReader'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import * as RosemanTypes from '../../types/RosemanTypes'
 import './index.css'
-// import TabGeneric from '../../appWidgets/TabGeneric'
 
-
-//import MainNozzleReadersTable from './MainNozzleReadersTable'
-
-export interface MainStationsTableProps {
-  data: StationInventorySummary[],
-  onRowSelected: (stationId: RosemanTypes.RosemanID, deviceType: string) => void,
+export interface InventoryNozzleReadersTableProps {
+  data: NozzleReader[]
 }
 
-export interface MainStationsTableState {
+export interface InventoryNozzleReadersTableState {
   resized: any[],
 }
 
@@ -36,28 +30,6 @@ const columns = [{
 }, {
   Header: 'Nozzle Reader Count',
   accessor: 'NRCount',
-  Cell: row => (
-    <div
-      style={{
-        width: '100%',
-        height: '100%',
-        backgroundColor: '#dadada',
-        borderRadius: '2px'
-      }}
-    >
-      <div
-        style={{
-          width: `${row.value}%`,
-          height: '100%',
-          backgroundColor: row.value > 66 ? '#85cc00'
-            : row.value > 33 ? '#ffbf00'
-              : '#ff2e00',
-          borderRadius: '2px',
-          transition: 'all .2s ease-out'
-        }}
-      />
-    </div>
-  )
 }, {
   Header: 'Vehical RFU Count',
   accessor: 'RFU_z',
@@ -99,7 +71,9 @@ const columns = [{
   accessor: 'HWVersion',
 }]
 
-class MainStationsTable extends React.Component<MainStationsTableProps, MainStationsTableState> {
+class InventoryNozzleReadersTable extends React.Component<
+  InventoryNozzleReadersTableProps,
+  InventoryNozzleReadersTableState> {
   constructor() {
     super();
     this.state = {
@@ -108,11 +82,10 @@ class MainStationsTable extends React.Component<MainStationsTableProps, MainStat
     };
   }
 
-
   onTableScroll = (ev) => {
     const tbody = ev.target;
     const scrollTop = tbody.scrollTop;
-    if (scrollTop === 0) { //&& this.props.withTop) {
+    if (scrollTop === 0 ) { //&& this.props.withTop) {
 
       // if (true) { //(this.scrollingIntoViewTop) {
       //   //this.scrollingIntoViewTop = false;
@@ -133,62 +106,69 @@ class MainStationsTable extends React.Component<MainStationsTableProps, MainStat
     }
 
     if (tbody.scrollHeight - 70 < scrollTop + tbody.clientHeight) {
-      // this.firstChild = null;
+     // this.firstChild = null;
 
       console.log('onBottomReach')
       //this.props.onBottomReach();
     }
   }
 
-  onDeviceSelected = (deviceName: string) => {
-
-  }
-
   render() {
-    // const viewerModeTabs = [{
-    //   title: 'Nozzle Readers',
-    //   callback: () => this.onDeviceSelected('All'),
-    // }, {
-    //   title: 'RFU',
-    //   callback: () => this.onDeviceSelected('PazInc'),
-    // }, {
-    //   title: 'CVS',
-    //   callback: () => this.onDeviceSelected('DorAlon'),
-    // }];
-
     return (
-      <div style={{height: '100%'}}>
+      <div>
         <ReactTable
           data={this.props.data}
 
           columns={columns}
           defaultPageSize={20}
           style={{
-            height: "calc(100% - 20px)"
+            height: "400px" // This will force the table body to overflow and scroll, since there is not enough room
           }}
           className="-striped -highlight"
-
+          SubComponent={row => {
+            return (
+              <div style={{padding: "20px"}}>
+                <em>
+                  You can put any component you want here, even another React
+                  Table!
+                </em>
+                <br/>
+                <br/>
+                <ReactTable
+                  data={this.props.data}
+                  columns={columns}
+                  defaultPageSize={10}
+                  showPagination={false}
+                  SubComponent={row => {
+                    return (
+                      <div style={{padding: "20px"}}>
+                        Another Sub Component!
+                      </div>
+                    );
+                  }}
+                />
+              </div>
+            );
+          }}
           onResizedChange={resized => this.setState({resized})}
-          onFetchData={(ev: any) => console.log('event', ev)}
-          getTbodyProps={(state, rowInfo, column, instance) => {
+          onFetchData={ (ev: any) => console.log('event',ev)}
+          getTbodyProps={ (state, rowInfo, column, instance) =>{
             return {
-              onScroll: (e) => {
+              onScroll: (e ) => {
                 this.onTableScroll(e)
-                // console.log('onScroll', e.target.scrollTop)
+               // console.log('onScroll', e.target.scrollTop)
               }
             }
           }}
-          getTdProps={(state, rowInfo, column, instance, handleOriginal) => {
-            const rowData = rowInfo ? rowInfo.original : null;
+          getTdProps={(state, rowInfo, column, instance) => {
             return {
               onClick: (e, handleOriginal) => {
                 console.log('A Td Element was clicked!')
                 console.log('it produced this event:', e)
                 console.log('It was in this column:', column)
-                console.log('It was in this row:', rowData, rowInfo)
+                console.log('It was in this row:', rowInfo)
                 console.log('It was in this table instance:', instance)
 
-                this.props.onRowSelected(rowData.stationId, 'nozzleReader')
                 // IMPORTANT! React-Table uses onClick internally to trigger
                 // events like expanding SubComponents and pivots.
                 // By default a custom 'onClick' handler will override this functionality.
@@ -210,4 +190,4 @@ class MainStationsTable extends React.Component<MainStationsTableProps, MainStat
   }
 }
 
-export default MainStationsTable;
+export default InventoryNozzleReadersTable;

@@ -7,6 +7,12 @@ export type Date = string;
 export type ClientGuid = string;
 export type StationaryDevice = NozzleReader | CVS | RFU;
 
+export enum DeviceTypes {
+  'NozzleReader' = 'NozzleReader',
+  'RFU' = 'RFU',
+  'CVS' = 'CVS'
+}
+
 export const PRODUCT_TYPES = {
   INVENTORY: 'Inventory',
 }

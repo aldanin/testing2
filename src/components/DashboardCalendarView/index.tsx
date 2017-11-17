@@ -4,7 +4,7 @@ import FontIcon from 'material-ui/FontIcon';
 import styled, { ThemeProvider } from 'styled-components';
 import * as Task from '../../types/Task'
 import * as TaskBasics from '../../types/TaskBasics'
-import ControlStrip from '../DashboardControlStrip'
+//import ControlStrip from '../DashboardControlStrip'
 import DateChooser from '../../appWidgets/DateChooser'
 import * as moment from 'moment'
 
@@ -267,18 +267,18 @@ class DashboardCalendar extends React.Component<DashboardCalendarProps, Dashboar
     return (
       <ThemeProvider theme={this.props.theme}>
         <Root>
-          <ControlStrip
-            onDisplaySelected=
-              {(timeSlot: Task.TimeSlotType,
-                currentDisplayDatesSpanFactorInHours: number) => this.setState({
-                currentTimeSlotType: timeSlot,
-                currentDisplayDatesSpanFactorInHours: currentDisplayDatesSpanFactorInHours
-              })}
-            onServiceSelected={(service: Task.ServiceTypeFilter) => {
-            }}
-            withViewSelector={true}
-            theme={this.props.theme.controlStrip}
-          />
+          {/*<ControlStrip*/}
+            {/*onDisplaySelected=*/}
+              {/*{(timeSlot: Task.TimeSlotType,*/}
+                {/*currentDisplayDatesSpanFactorInHours: number) => this.setState({*/}
+                {/*currentTimeSlotType: timeSlot,*/}
+                {/*currentDisplayDatesSpanFactorInHours: currentDisplayDatesSpanFactorInHours*/}
+              {/*})}*/}
+            {/*onServiceSelected={(service: Task.ServiceTypeFilter) => {*/}
+            {/*}}*/}
+            {/*withViewSelector={true}*/}
+            {/*theme={this.props.theme.controlStrip}*/}
+          {/*/>*/}
           <MainPartWrap>
             <ThemeProvider theme={this.props.theme.dateChooser}>
               <DateChooserWrap>

@@ -3,14 +3,12 @@ import * as Theme from './Theme'
 import styled, { ThemeProvider } from 'styled-components';
 import {InventoryMain} from '../../types/InventoryData'
 import  * as TaskBasics from '../../types/TaskBasics'
-import ControlStrip from '../DashboardControlStrip'
 import InventoryStationsTable from './InventoryStationsTable'
-import * as Task from '../../types/Task'
 import * as RosemanTypes from '../../types/RosemanTypes'
 
 export interface InventoryStationsViewProps extends React.Props<InventoryStationsView> {
   inventoryMainData: InventoryMain,
-  onInventoryStationsTableRowExpanded: (stationId: RosemanTypes.RosemanID, deviceType: string) => void
+  onStationSelected: (stationId: RosemanTypes.RosemanID, deviceType: string) => void
   theme: Theme.ThemeProps;
 }
 
@@ -55,63 +53,15 @@ class InventoryStationsView extends React.Component<InventoryStationsViewProps, 
     this.pageSize = undefined;
   }
 
-  onTaskCheck = (taskId: string, isChecked: boolean) => {
-    console.log(taskId, isChecked)
-    if (isChecked !== undefined && isChecked !== null) {
-      const index = this.state.selectedTasks.indexOf(taskId);
-
-      if (isChecked) {
-        if (index === -1) {
-          this.state.selectedTasks.push(taskId);
-        }
-      } else {
-        if (index !== -1) {
-          this.state.selectedTasks.splice(index, 1);
-        }
-      }
-
-      this.setState({selectedTasks: this.state.selectedTasks.slice(0)})
-    }
-  }
-
-  onListHeaderClick = (fieldName: string) => {
-    // TODO: implement
-  }
-
   render() {
-    //const tasks = this.props.tasks.slice(0, 50);
-
     return (
       <ThemeProvider theme={this.props.theme}>
         <Root>
-          <ControlStrip
-            onDisplaySelected=
-              {(timeSlot: Task.TimeSlotType,
-                currentDisplayDatesSpanFactorInHours: number) => this.setState({
-                currentTimeSlotType: timeSlot,
-                currentDisplayDatesSpanFactorInHours: currentDisplayDatesSpanFactorInHours
-              })}
-            onServiceSelected={(service: Task.ServiceTypeFilter) => {
-            }}
-            withViewSelector={false}
-            theme={this.props.theme.controlStrip}
-          />
           <MainPartWrap>
             <InventoryStationsTable
               data={this.props.inventoryMainData.stations}
-              onRowExpanded={this.props.onInventoryStationsTableRowExpanded}
+              onRowSelected={this.props.onStationSelected}
             />
-            {/*<TasksList*/}
-              {/*data={tasks}*/}
-              {/*theme={this.props.theme.tasksList}*/}
-              {/*checkedRows={this.state.selectedTasks}*/}
-              {/*onTaskCheck={this.onTaskCheck}*/}
-              {/*onAbortTask={this.props.onAbortTask}*/}
-              {/*headerStatus={{startTimestamp: 'desc'}}*/}
-              {/*onHeaderClick={() => {*/}
-                {/*// TODO: implement*/}
-              {/*}}*/}
-            {/*/>*/}
           </MainPartWrap>
         </Root>
       </ThemeProvider>

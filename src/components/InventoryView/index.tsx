@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import * as EmployeeSummary from '../../types/EmployeeSummary'
 import StatusCard from '../../appWidgets/StatusCard'
 import DashboardSummaryView from '../DashboardSummaryView'
-import InventoryStationsView from '../InventoryStationsView'
+import InventorySelector from '../InventorySelector'
 import { InventoryMain } from '../../types/InventoryData'
 import DashboardCalendarView from '../DashboardCalendarView'
 import * as Task from '../../types/Task'
@@ -17,7 +17,7 @@ import * as RosemanTypes from '../../types/RosemanTypes'
 
 export interface InventoryViewProps extends React.Props<InventoryView> {
   inventoryMainData: InventoryMain,
-  onInventoryStationsTableRowExpanded: (stationId: RosemanTypes.RosemanID,
+  onInventoryStationsTableRowSelected: (stationId: RosemanTypes.RosemanID,
                                         deviceType: string) => void,
   employeeSummay: EmployeeSummary.EmployeeSummary
   tasks: Task.Task[],
@@ -167,9 +167,9 @@ class InventoryView extends React.Component<InventoryViewProps, InventoryViewSta
         </ViewWrap>
       ),
       <ViewWrap key={2}>
-        <InventoryStationsView
+        <InventorySelector
           inventoryMainData={this.props.inventoryMainData}
-          onInventoryStationsTableRowExpanded={this.props.onInventoryStationsTableRowExpanded}
+          onStationsSelected={this.props.onInventoryStationsTableRowSelected}
           theme={this.props.theme.tasksView}
         />
       </ViewWrap>,

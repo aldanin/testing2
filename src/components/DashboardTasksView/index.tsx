@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import * as Task from '../../types/Task'
 import * as TaskBasics from '../../types/TaskBasics'
 //import TasksList from '../../components/TasksList';
-import ControlStrip from '../DashboardControlStrip'
+// import ControlStrip from '../DashboardControlStrip'
 import TestTable from './table_test'
 
 export interface DashboardTasksProps extends React.Props<DashboardTasks> {
@@ -83,18 +83,18 @@ class DashboardTasks extends React.Component<DashboardTasksProps, DashboardTasks
     return (
       <ThemeProvider theme={this.props.theme}>
         <Root>
-          <ControlStrip
-            onDisplaySelected=
-              {(timeSlot: Task.TimeSlotType,
-                currentDisplayDatesSpanFactorInHours: number) => this.setState({
-                currentTimeSlotType: timeSlot,
-                currentDisplayDatesSpanFactorInHours: currentDisplayDatesSpanFactorInHours
-              })}
-            onServiceSelected={(service: Task.ServiceTypeFilter) => {
-            }}
-            withViewSelector={false}
-            theme={this.props.theme.controlStrip}
-          />
+          {/*<ControlStrip*/}
+            {/*onDisplaySelected=*/}
+              {/*{(timeSlot: Task.TimeSlotType,*/}
+                {/*currentDisplayDatesSpanFactorInHours: number) => this.setState({*/}
+                {/*currentTimeSlotType: timeSlot,*/}
+                {/*currentDisplayDatesSpanFactorInHours: currentDisplayDatesSpanFactorInHours*/}
+              {/*})}*/}
+            {/*onServiceSelected={(service: Task.ServiceTypeFilter) => {*/}
+            {/*}}*/}
+            {/*withViewSelector={false}*/}
+            {/*theme={this.props.theme.controlStrip}*/}
+          {/*/>*/}
           <MainPartWrap>
             <TestTable/>
             {/*<TasksList*/}

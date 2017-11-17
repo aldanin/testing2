@@ -7,7 +7,7 @@ import * as Task from '../../types/Task'
 import * as moment from 'moment'
 import DashChart from '../../appWidgets/TasksBarChart'
 import PinChart from '../../appWidgets/TasksPinsChart'
-import ControlStrip from '../DashboardControlStrip'
+//import ControlStrip from '../DashboardControlStrip'
 
 export interface DashboardSummaryProps extends React.Props<DashboardSummary> {
   tasks: Task.Task[],
@@ -200,17 +200,17 @@ class DashboardSummary extends React.Component<DashboardSummaryProps, DashboardS
     return (
       <ThemeProvider theme={this.props.theme}>
         <Root>
-          <ControlStrip
-            onDisplaySelected={(
-              timeSlot: Task.TimeSlotType,
-              currentDisplayDatesSpanFactorInHours: number) => this.setState({
-                currentTimeSlotType: timeSlot,
-                currentDisplayDatesSpanFactorInHours: currentDisplayDatesSpanFactorInHours
-              })}
-            onServiceSelected={(service: Task.ServiceTypeFilter) => {
-            }}
-            theme={this.props.theme.controlStrip}
-          />
+          {/*<ControlStrip*/}
+            {/*onDisplaySelected={(*/}
+              {/*timeSlot: Task.TimeSlotType,*/}
+              {/*currentDisplayDatesSpanFactorInHours: number) => this.setState({*/}
+                {/*currentTimeSlotType: timeSlot,*/}
+                {/*currentDisplayDatesSpanFactorInHours: currentDisplayDatesSpanFactorInHours*/}
+              {/*})}*/}
+            {/*onServiceSelected={(service: Task.ServiceTypeFilter) => {*/}
+            {/*}}*/}
+            {/*theme={this.props.theme.controlStrip}*/}
+          {/*/>*/}
           <MainPartWrap>
             <GraphicTimelineContainer>
               <GraphicTimeline

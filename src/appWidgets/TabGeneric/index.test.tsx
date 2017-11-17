@@ -12,6 +12,7 @@ it('renders without crashing', () => {
       callback: () => null,
     }],
     initialSelectedIndex: 1,
+    isDisabled: false,
   }
 
   ReactDOM.render(<TabGeneric {...props}/>, div);

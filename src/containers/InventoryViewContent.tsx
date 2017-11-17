@@ -42,7 +42,7 @@ class InventoryViewContent extends React.Component<InventoryViewContentProps, {}
     return (
       <InventoryView
         inventoryMainData={this.props.inventoryMainData}
-        onInventoryStationsTableRowExpanded={(stationId: RosemanTypes.RosemanID,
+        onInventoryStationsTableRowSelected={(stationId: RosemanTypes.RosemanID,
                                               deviceName: string) =>
           this.props.getInventoryDeviceData(stationId, deviceName, null)}
         employeeSummay={MockEmployeeSummary.getEmployeeSummary('3')}

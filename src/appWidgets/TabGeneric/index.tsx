@@ -68,7 +68,11 @@ const Button = styled.div`
     z-index: 1;
     box-shadow: ${prop => prop.theme.shadow};
   }
-`
+`;
+
+const TabWrapper = styled.div`
+  
+`;
 
 class TabGeneric extends React.Component<TabGenericProps, TabGenericState> {
   static defaultProps: Partial<TabGenericProps> = {
@@ -134,7 +138,7 @@ class TabGeneric extends React.Component<TabGenericProps, TabGenericState> {
                 : this.props.theme.disActiveBgColor
             }
           >
-            {this.getTabs()}
+            <TabWrapper>{this.getTabs()}</TabWrapper>
           </Container>
         </Wrapper>
       </ThemeProvider>

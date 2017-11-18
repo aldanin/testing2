@@ -105,7 +105,7 @@ class InventoryNozzleReadersTable extends React.Component<
     }
 
     if (tbody.scrollHeight - 70 < scrollTop + tbody.clientHeight) {
-     // this.firstChild = null;
+      // this.firstChild = null;
 
       console.log('onBottomReach')
       //this.props.onBottomReach();
@@ -130,7 +130,7 @@ class InventoryNozzleReadersTable extends React.Component<
             return {
               onScroll: (e ) => {
                 this.onTableScroll(e)
-               // console.log('onScroll', e.target.scrollTop)
+                // console.log('onScroll', e.target.scrollTop)
               }
             }
           }}

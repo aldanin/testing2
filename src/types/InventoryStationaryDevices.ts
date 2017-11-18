@@ -1,9 +1,10 @@
 import * as Roseman from './RosemanTypes'
-import DeviceSummaryBase from './DeviceSummaryBase'
+// import SummaryBase from './SummaryBase'
 
 export default interface InventoryStationaryDevices {
-  devices: DeviceSummaryBase[],
   stationId: Roseman.RosemanID,
   stationName: string,
+  deviceType: string,
+  devices: any[],
   totalItems: number,
 }

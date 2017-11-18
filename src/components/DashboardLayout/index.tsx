@@ -225,7 +225,7 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
               <TabstripComponent
                 tabs={this.getTabs()}
                 views={this.getViews()}
-                selectedTabIndex={2}
+                selectedTabIndex={1}
                 tabHeight={TAB_HEIGHT}
                 theme={this.props.theme.mainTabstrip}
               />

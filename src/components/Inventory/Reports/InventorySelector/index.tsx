@@ -4,7 +4,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import { InventoryMain } from '../../../../types/InventoryData'
 import InventoryStationaryDevices from '../../../../types/InventoryStationaryDevices'
 import ControlStrip from '../../../DashboardControlStrip'
-import InventoryStationsView from '../InventoryStationsView'
 import InventoryNozzleReadersView from '../InventoryNozzleReadersView'
 import InventoryRFUView from '../InventoryRFUView'
 import InventoryCVSView from '../InventoryCVSView'
@@ -23,7 +22,10 @@ export interface InventorySelectorProps extends React.Props<InventorySelector> {
   theme: Theme.ThemeProps;
 }
 
-type viewName = 'Station' | 'NozzleReader' | 'RFU' | 'CVS';
+type viewName =
+  'NozzleReadersMain' | 'NozzleReaderDetails' | 'NozzleReaderDetailsDaily' |
+  'RFU' | 'RFUDetails' |
+  'VehiclesMain' | 'VehicleDetails' | 'VehicleDetailsDaily' ;
 
 export interface InventorySelectorState {
   currentView: viewName;
@@ -59,7 +61,7 @@ class InventorySelector extends React.Component<InventorySelectorProps, Inventor
     super(props);
 
     this.state = {
-      currentView: 'Station'
+      currentView: 'NozzleReadersMain'
     }
 
     this.lastId = undefined;
@@ -68,7 +70,7 @@ class InventorySelector extends React.Component<InventorySelectorProps, Inventor
 
   onStationSelected = (stationId: RosemanTypes.RosemanID) => {
     this.setState({
-      currentView: 'NozzleReader'
+      currentView: 'NozzleReadersMain'
     });
 
     this.props.onStationSelected(stationId);
@@ -100,16 +102,23 @@ class InventorySelector extends React.Component<InventorySelectorProps, Inventor
     console.log('this.props.currentViewType',this.props.currentViewType)
     let view;
     switch (this.props.currentViewType) {
-      case 'Station':
+      case 'NozzleReadersMain':
         view = (
-          <InventoryStationsView
-            inventoryMainData={this.props.inventoryMainData}
-            onStationSelected={(stationId: RosemanTypes.RosemanID, deviceType: string) => this.onStationSelected(stationId)}
+          <InventoryNozzleReadersView
+            inventoryNozzleReadersData={this.props.inventoryNozzleReadersData}
             theme={this.props.theme}
           />
-        )
+        );
         break;
-      case 'NozzleReader':
+      case 'NozzleReaderDetails':
+        view = (
+          <InventoryNozzleReadersView
+            inventoryNozzleReadersData={this.props.inventoryNozzleReadersData}
+            theme={this.props.theme}
+          />
+        );
+        break;
+      case 'NozzleReaderDetailsDaily':
         view = (
           <InventoryNozzleReadersView
             inventoryNozzleReadersData={this.props.inventoryNozzleReadersData}

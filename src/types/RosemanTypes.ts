@@ -14,5 +14,6 @@ export enum DeviceTypes {
 }
 
 export const PRODUCT_TYPES = {
-  INVENTORY: 'Inventory',
+  INVENTORY_MAIN: 'InventoryMain',
+  INVENTORY_DEVICE: 'InventoryDevice',
 }

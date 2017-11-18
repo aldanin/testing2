@@ -4,16 +4,16 @@ import {
   // Tips
 } from "./utils";
 import styled from 'styled-components'
-import NozzleReader from '../../types/NozzleReader'
+import RFU from '../../types/RFU'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import './index.css'
 
-export interface InventoryNozzleReadersTableProps {
-  data: NozzleReader[]
+export interface InventoryRFUTableProps {
+  data: RFU[]
 }
 
-export interface InventoryNozzleReadersTableState {
+export interface InventoryRFUTableState {
   resized: any[],
 }
 
@@ -22,57 +22,33 @@ const Wrap = styled.div`
 `;
 
 const columns = [{
-  Header: 'Pump #',
-  accessor: 'pumpNo'
-}, {
-  Header: 'Nozzle #',
-  id: 'nozzleNo',
-  accessor: d => d.nozzleNo
-}, {
-  Header: 'Iron Number',
-  id: 'ironNumber',
-  accessor: d => d.ironNumber
-}, {
-  Header: 'Nozzle Reader Count',
-  accessor: 'NRCount',
-}, {
-  Header: 'Status',
-  accessor: 'status',
+  Header: 'RFU Type',
+  accessor: 'RFUType'
 }, {
   Header: 'First Usage',
-  accessor: 'firstUsage',
+  id: 'firstUsage',
+  accessor: d => d.firstUsage
 }, {
   Header: 'Last Report',
-  accessor: 'lastReport',
+  id: 'lastReport',
+  accessor: d => d.lastReport
 }, {
-  Header: 'Nozzle Model Name',
-  accessor: 'nozzleModelName',
+  Header: 'Iron Number',
+  accessor: 'ironNumber',
 }, {
-  Header: 'HW Type',
-  accessor: 'HWType',
+  Header: 'Channel',
+  accessor: 'channel',
 }, {
-  Header: 'HW Name',
-  accessor: 'HWName',
+  Header: 'Port',
+  accessor: 'port',
 }, {
-  Header: 'Battery Voltage',
-  accessor: 'batteryVoltage',
-}, {
-  Header: 'Aver. Day Usage(Sec)',
-  accessor: 'avarageDayUseSec',
-}, {
-  Header: 'Total Usage Time(Sec)',
-  accessor: 'totalUsageTimeSec',
-}, {
-  Header: 'Refuels',
-  accessor: 'refuels',
-}, {
-  Header: 'Fuel Type',
-  accessor: 'fuelType',
+  Header: 'Location',
+  accessor: 'location',
 }]
 
-class InventoryNozzleReadersTable extends React.Component<
-  InventoryNozzleReadersTableProps,
-  InventoryNozzleReadersTableState> {
+class InventoryRFUTable extends React.Component<
+  InventoryRFUTableProps,
+  InventoryRFUTableState> {
   constructor() {
     super();
     this.state = {
@@ -137,6 +113,7 @@ class InventoryNozzleReadersTable extends React.Component<
           getTdProps={(state, rowInfo, column, instance) => {
             return {
               onClick: (e, handleOriginal) => {
+                console.log('click')
                 if (rowInfo && handleOriginal) {
                   handleOriginal()
                 }
@@ -153,4 +130,4 @@ class InventoryNozzleReadersTable extends React.Component<
   }
 }
 
-export default InventoryNozzleReadersTable;
+export default InventoryRFUTable;

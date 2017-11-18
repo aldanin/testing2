@@ -24,7 +24,7 @@ const Root = styled.div`
 `;
 
 const MainPartWrap = styled.div`
-  height: calc(100% - 3.5rem - 30px);
+  height: 100%;
   margin-top: 40px;
   width: calc(100% - 60px);
   margin: 30px auto 0 auto;

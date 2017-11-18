@@ -7,6 +7,7 @@ import StatusCard from '../../appWidgets/StatusCard'
 import DashboardSummaryView from '../DashboardSummaryView'
 import InventorySelector from '../InventorySelector'
 import { InventoryMain } from '../../types/InventoryData'
+import InventoryStationaryDevices from '../../types/InventoryStationaryDevices'
 import DashboardCalendarView from '../DashboardCalendarView'
 import * as Task from '../../types/Task'
 import * as TaskBasics from '../../types/TaskBasics'
@@ -17,8 +18,12 @@ import * as RosemanTypes from '../../types/RosemanTypes'
 
 export interface InventoryViewProps extends React.Props<InventoryView> {
   inventoryMainData: InventoryMain,
-  onInventoryStationsTableRowSelected: (stationId: RosemanTypes.RosemanID,
-                                        deviceType: string) => void,
+  inventoryNozzleReadersData: InventoryStationaryDevices,
+  inventoryRFUData: InventoryStationaryDevices,
+  inventoryCVSData: InventoryStationaryDevices,
+  onStationSelected: (stationId: RosemanTypes.RosemanID) => void,
+  onDeviceTypeSelected: (deviceType: RosemanTypes.DeviceTypes) => void,
+  currentViewType: string,
   employeeSummay: EmployeeSummary.EmployeeSummary
   tasks: Task.Task[],
 
@@ -169,7 +174,12 @@ class InventoryView extends React.Component<InventoryViewProps, InventoryViewSta
       <ViewWrap key={2}>
         <InventorySelector
           inventoryMainData={this.props.inventoryMainData}
-          onStationsSelected={this.props.onInventoryStationsTableRowSelected}
+          inventoryNozzleReadersData={this.props.inventoryNozzleReadersData}
+          inventoryRFUData={this.props.inventoryRFUData}
+          inventoryCVSData={this.props.inventoryCVSData}
+          onStationSelected={this.props.onStationSelected}
+          onDeviceTypeSelected={this.props.onDeviceTypeSelected}
+          currentViewType={this.props.currentViewType}
           theme={this.props.theme.tasksView}
         />
       </ViewWrap>,

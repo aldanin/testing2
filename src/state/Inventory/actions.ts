@@ -73,11 +73,14 @@ export function inventoryDeviceRequest(stationId: RosemanTypes.RosemanID,
 
 export interface InventoryDeviceSuccessAction extends Redux.Action {
   payload: {
-    data: InventoryStationaryDevices
+    data: InventoryStationaryDevices,
+    deviceType: string,
   }
 }
 
-export function inventoryDeviceSuccess(payload: { data: InventoryStationaryDevices }): InventoryDeviceSuccessAction {
+export function inventoryDeviceSuccess(payload: {
+  data: InventoryStationaryDevices,
+  deviceType: string }): InventoryDeviceSuccessAction {
   return {
     type: INVENTORY_DEVICE_SUCCESS,
     payload

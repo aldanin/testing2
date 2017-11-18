@@ -3,6 +3,7 @@ import {
   // Logo,
   // Tips
 } from "./utils";
+import styled from 'styled-components'
 import { StationInventorySummary } from '../../types/StationInventorySummary'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
@@ -15,12 +16,18 @@ import './index.css'
 
 export interface MainStationsTableProps {
   data: StationInventorySummary[],
-  onRowSelected: (stationId: RosemanTypes.RosemanID, deviceType: string) => void,
+  onRowSelected: (stationId: RosemanTypes.RosemanID, deviceType: RosemanTypes.DeviceTypes) => void,
 }
 
 export interface MainStationsTableState {
   resized: any[],
+  currentRowIndex: number
 }
+
+const Wrap = styled.div`
+  height: 100%;
+`;
+
 
 const columns = [{
   Header: 'Customer Name',
@@ -103,7 +110,7 @@ class MainStationsTable extends React.Component<MainStationsTableProps, MainStat
   constructor() {
     super();
     this.state = {
-
+      currentRowIndex: 0,
       resized: []
     };
   }
@@ -157,14 +164,14 @@ class MainStationsTable extends React.Component<MainStationsTableProps, MainStat
     // }];
 
     return (
-      <div style={{height: '100%'}}>
+      <Wrap>
         <ReactTable
           data={this.props.data}
 
           columns={columns}
           defaultPageSize={20}
           style={{
-            height: "calc(100% - 20px)"
+            height: '100%',
           }}
           className="-striped -highlight"
 
@@ -182,18 +189,15 @@ class MainStationsTable extends React.Component<MainStationsTableProps, MainStat
             const rowData = rowInfo ? rowInfo.original : null;
             return {
               onClick: (e, handleOriginal) => {
+
                 console.log('A Td Element was clicked!')
                 console.log('it produced this event:', e)
                 console.log('It was in this column:', column)
                 console.log('It was in this row:', rowData, rowInfo)
                 console.log('It was in this table instance:', instance)
 
-                this.props.onRowSelected(rowData.stationId, 'nozzleReader')
-                // IMPORTANT! React-Table uses onClick internally to trigger
-                // events like expanding SubComponents and pivots.
-                // By default a custom 'onClick' handler will override this functionality.
-                // If you want to fire the original onClick handler, call the
-                // 'handleOriginal' function.
+                this.props.onRowSelected(rowData.stationId, RosemanTypes.DeviceTypes.NozzleReader)
+
                 if (handleOriginal) {
                   handleOriginal()
                 }
@@ -201,11 +205,21 @@ class MainStationsTable extends React.Component<MainStationsTableProps, MainStat
             }
           }
           }
-        />
+        >
+          {(state, makeTable, instance) => {
+            console.log('state', state)
+            return (
+              <Wrap >
+                {/*<pre><code>state.allVisibleColumns === {JSON.stringify(state.allVisibleColumns, null, 4)}</code></pre>*/}
+                {makeTable()}
+              </Wrap>
+            )
+          }}
+        </ReactTable>
         {/*<br />*/}
         {/*<Tips />*/}
         {/*<Logo />*/}
-      </div>
+      </Wrap>
     );
   }
 }

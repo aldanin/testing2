@@ -44,13 +44,19 @@ class ProductionApi {
 
   public generateApiURI(endpoint: string,
                         query?: types.ApiQueryParams
-                      ) {
+  ) {
     query = query || {};
 
     return `${this.apiAddress}/${endpoint}?${qs.stringify(query)}`;
   }
 
   public fetchInventoryMain(meta: types.ProductMeta, query: types.ApiQueryParams): Promise<any> {
+    let uri = this.generateApiURI(`inventory`, query);
+
+    return Promise.resolve(this.get(uri)).then((result) => result.data);
+  }
+
+  public fetchInventoryDevice(meta: types.ProductMeta, query: types.InventoryDeviceApiQuery): Promise<any> {
     let uri = this.generateApiURI(`inventory`, query);
 
     return Promise.resolve(this.get(uri)).then((result) => result.data);

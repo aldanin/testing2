@@ -4,16 +4,16 @@ import {
   // Tips
 } from "./utils";
 import styled from 'styled-components'
-import NozzleReader from '../../types/NozzleReader'
+import CVS from '../../types/CVS'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import './index.css'
 
-export interface InventoryNozzleReadersTableProps {
-  data: NozzleReader[]
+export interface InventoryCVSTableProps {
+  data: CVS[]
 }
 
-export interface InventoryNozzleReadersTableState {
+export interface InventoryCVSTableState {
   resized: any[],
 }
 
@@ -22,57 +22,24 @@ const Wrap = styled.div`
 `;
 
 const columns = [{
-  Header: 'Pump #',
-  accessor: 'pumpNo'
-}, {
-  Header: 'Nozzle #',
-  id: 'nozzleNo',
-  accessor: d => d.nozzleNo
-}, {
   Header: 'Iron Number',
-  id: 'ironNumber',
-  accessor: d => d.ironNumber
-}, {
-  Header: 'Nozzle Reader Count',
-  accessor: 'NRCount',
+  accessor: 'ironNumber'
 }, {
   Header: 'Status',
-  accessor: 'status',
+  id: 'status',
+  accessor: d => d.nozzleNo
 }, {
-  Header: 'First Usage',
-  accessor: 'firstUsage',
+  Header: 'SAM1',
+  id: 'SAM1',
+  accessor: d => d.SAM1
 }, {
-  Header: 'Last Report',
-  accessor: 'lastReport',
-}, {
-  Header: 'Nozzle Model Name',
-  accessor: 'nozzleModelName',
-}, {
-  Header: 'HW Type',
-  accessor: 'HWType',
-}, {
-  Header: 'HW Name',
-  accessor: 'HWName',
-}, {
-  Header: 'Battery Voltage',
-  accessor: 'batteryVoltage',
-}, {
-  Header: 'Aver. Day Usage(Sec)',
-  accessor: 'avarageDayUseSec',
-}, {
-  Header: 'Total Usage Time(Sec)',
-  accessor: 'totalUsageTimeSec',
-}, {
-  Header: 'Refuels',
-  accessor: 'refuels',
-}, {
-  Header: 'Fuel Type',
-  accessor: 'fuelType',
+  Header: 'SAM2',
+  accessor: 'SAM2',
 }]
 
-class InventoryNozzleReadersTable extends React.Component<
-  InventoryNozzleReadersTableProps,
-  InventoryNozzleReadersTableState> {
+class InventoryCVSTable extends React.Component<
+  InventoryCVSTableProps,
+  InventoryCVSTableState> {
   constructor() {
     super();
     this.state = {
@@ -153,4 +120,4 @@ class InventoryNozzleReadersTable extends React.Component<
   }
 }
 
-export default InventoryNozzleReadersTable;
+export default InventoryCVSTable;

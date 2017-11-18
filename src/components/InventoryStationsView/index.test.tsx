@@ -11,7 +11,8 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
   const props: InventoryStationsViewProps = {
     inventoryMainData: TypeDefaults.INVENTORY_MAIN_DEFAULT,
-    onStationSelected: (stationId: RosemanTypes.RosemanID, deviceType: string) => null,
+    onStationSelected: (stationId: RosemanTypes.RosemanID,
+                        deviceType: RosemanTypes.DeviceTypes.NozzleReader) => null,
     theme: Theme.DEFAULT_THEME,
   }
 

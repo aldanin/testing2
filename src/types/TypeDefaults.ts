@@ -8,7 +8,7 @@ export const INVENTORY_MAIN_DEFAULT: InventoryMain = {
   pageSize: 0,
 }
 
-export const INVENTORY_NOZZLEREADERS_DEFAULT: InventoryStationaryDevices = {
+export const INVENTORY_DEVICES_DEFAULT: InventoryStationaryDevices = {
   devices: [],
   stationId: 0,
   stationName: '',

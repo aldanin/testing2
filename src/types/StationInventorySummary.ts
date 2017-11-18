@@ -22,7 +22,7 @@ export interface StationInventorySummary {
   lastReportTime: Roseman.Date,
   HWVersion: string,
   devices?: {
-    nozzleReader?: InventoryStationaryDevices[],
+    NozzleReader?: InventoryStationaryDevices[],
     RFU?: InventoryStationaryDevices[],
     CVS?: InventoryStationaryDevices[],
   }

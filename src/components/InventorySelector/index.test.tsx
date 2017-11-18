@@ -11,8 +11,12 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
   const props: InventorySelectorProps = {
     inventoryMainData: TypeDefaults.INVENTORY_MAIN_DEFAULT,
-    onStationsSelected: (stationId: RosemanTypes.RosemanID, deviceType: string) => null,
-    onDeviceSelected: (deviceType: RosemanTypes.DeviceTypes) => null,
+    inventoryNozzleReadersData: null,
+    inventoryRFUData: null,
+    inventoryCVSData: null,
+    onStationSelected: (stationId: RosemanTypes.RosemanID) => null,
+    onDeviceTypeSelected: (deviceType: RosemanTypes.DeviceTypes) => null,
+    currentViewType: 'Station',
     theme: Theme.DEFAULT_THEME,
   }
 

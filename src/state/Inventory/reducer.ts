@@ -19,7 +19,12 @@ export const initialState: State = Immutable.fromJS({
     pageNumber: 0,
     pageSize: 0,
   },
+  currentStationId: -1,
+  currentViewType: 'Station',
   inventoryMainFilters: null,
+  inventoryNozzleReadersFilters: null,
+  inventoryRFUFilters: null,
+  inventoryCVSFilters: null,
   isFetching: false,
   error: null,
 })
@@ -28,8 +33,7 @@ export const initialState: State = Immutable.fromJS({
 // based on a token being in local storage. In a real app,
 // we would also want a util to check if the token is expired.
 function inventory(state: State = initialState, action: Action) {
-  let data;
-  let immutableData;
+  let data, immutableData, index, filters, deviceType, stationId;
 
   switch (action.type) {
     case Actions.INVENTORY_FAIL:
@@ -38,31 +42,58 @@ function inventory(state: State = initialState, action: Action) {
         .set('error', error)
         .set('isFetching', false);
     case Actions.INVENTORY_MAIN_REQUEST:
-      const {filters} =
-        (<Actions.InventoryMainRequestAction> action).payload;
+      filters = (<Actions.InventoryMainRequestAction> action).payload;
       return state
         .set('inventoryMainFilters', filters)
+        .set('error', false)
+        .set('isFetching', true);
+    case Actions.INVENTORY_DEVICE_REQUEST:
+      ({filters, deviceType, stationId} = (<Actions.InventoryDeviceRequestAction> action).payload);
+
+      switch (deviceType) {
+        case 'NozzleReader':
+          state = state.set('inventoryNozzleReadersFilters', filters);
+          break;
+        case 'RFU':
+          state = state.set('inventoryRFUFilters', filters);
+          break;
+        case 'CVS':
+          state = state.set('inventoryCVSFilters', filters);
+          break;
+        default:
+          break;
+      }
+
+      return state
+        .set('currentStationId', stationId)
         .set('error', false)
         .set('isFetching', true);
     case  Actions.INVENTORY_MAIN_SUCCESS:
 
       data = (<Actions.InventoryMainSuccessAction> action).payload.data;
-      console.log('data===>',data)
+
       immutableData = Immutable.fromJS(data);
 
       return state
         .set('inventoryMainData', immutableData)
+        .set('currentViewType', 'Station')
         .set('error', false)
         .set('isFetching', false);
-    // case  Actions.INVENTORY_DEVICE_SUCCESS:
-    //
-    //   data = (<Actions.InventoryDeviceSuccessAction> action).payload;
-    //   immutableData = Immutable.fromJS(data);
-    //
-    //   return state
-    //     .set('inventoryMainData', immutableData)
-    //     .set('error', false)
-    //     .set('isFetching', false);
+    case  Actions.INVENTORY_DEVICE_SUCCESS:
+
+      ({data, deviceType} = (<Actions.InventoryDeviceSuccessAction> action).payload);
+
+      index = state.getIn(['inventoryMainData', 'stations']).findIndex(station => {
+        return station.get('stationId') === state.get('currentStationId');
+      })
+
+      immutableData = Immutable.fromJS(data);
+
+      return state
+        .setIn(['inventoryMainData', 'stations', index, 'devices', deviceType], immutableData)
+        .set('currentViewType', deviceType)
+        .set('error', false)
+        .set('isFetching', false);
     default:
       return state
   }

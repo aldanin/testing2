@@ -1,4 +1,3 @@
-import * as Enums from './Enums'
 import StationaryDeviceBase from './StationaryDeviceBase'
 import { RosemanID } from "./RosemanTypes";
 import NozzleReader from './NozzleReader'

@@ -1,5 +1,4 @@
 import * as Roseman from './RosemanTypes'
-import InventoryStationaryDevices from './InventoryStationaryDevices'
 import FaultBase from './BaseTypes/FaultBase'
 
 export interface StationSummary {

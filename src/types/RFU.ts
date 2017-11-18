@@ -1,5 +1,6 @@
 import StationaryDeviceBase from "./StationaryDeviceBase";
 import * as Enums from './Enums'
+import RFUParameterSet from './Parameters/RFUParameterSet'
 
 export default interface RFU extends StationaryDeviceBase {
   RFUType: Enums.RFUType,
@@ -9,5 +10,5 @@ export default interface RFU extends StationaryDeviceBase {
   channel: number,
   port: string,
   location: string,
-  parameters: any // deprecated for now
+  parameters: RFUParameterSet
 }

@@ -40,9 +40,6 @@ class InventoryRFUView extends React.Component<InventoryRFUViewProps, InventoryR
     super(props);
 
     this.state = {
-      currentTimeSlotType: 'Day',
-      currentDisplayDatesSpanFactorInHours: 24,
-      selectedTasks: []
     }
 
     this.lastId = undefined;

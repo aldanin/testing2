@@ -1,0 +1,26 @@
+import StatisticsBase from './StatisticsBase'
+
+export default interface NozzleReaderStatistics extends StatisticsBase {
+  minimumFirstIDAttempt: number,
+  maximumFirstIDAttempt: number,
+  averageCVSResponseAttempt: number,
+  maximumCVSResponseAttempt: number,
+  averageRefuelsDurationSec: number,
+  totalRefuelDurationSec: number,
+  RF_ReceiveAttemptCount: number,
+  RF_TransmitCount: number,
+  RF_SuccessfulTransitions: number,
+  numberOfTagReadingAttempts: number,
+  numberOfSuccessfulReadingAttempts: number,
+  averageRSSIReceive: number,
+  maxRSSIReceive: number,
+  minRSSIReceive: number,
+  averageRSSITransmit: number,
+  maxRSSITransmit: number,
+  minRSSITransmit: number,
+  universalTagPausesCount: number,
+  EMTagPausesCount: number,
+  radioPausesCount: number,
+  totalNumberOfRefuelsWithPauses: number,
+  totalNumberOfRefuels: number,
+}

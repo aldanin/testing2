@@ -32,9 +32,6 @@ class InventoryCVSView extends React.Component<InventoryCVSViewProps, InventoryC
     theme: Theme.DEFAULT_THEME,
   };
 
-  private lastId: number;
-  private pageSize: number;
-
   constructor(props: InventoryCVSViewProps) {
 
     super(props);
@@ -45,8 +42,6 @@ class InventoryCVSView extends React.Component<InventoryCVSViewProps, InventoryC
       selectedTasks: []
     }
 
-    this.lastId = undefined;
-    this.pageSize = undefined;
   }
 
   render() {

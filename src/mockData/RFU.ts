@@ -1,11 +1,11 @@
 // import * as NozzleReader from '../types/NozzleReader'
 import * as Filters from '../types/Filters'
 import { RosemanID } from "../types/RosemanTypes";
+import InventoryStationaryDevices from '../types/InventoryStationaryDevices'
 
-const DATA = {
+const DATA: InventoryStationaryDevices = {
   "stationId": 405,
   "stationName": "אשקלון",
-  "deviceType": "RFU",
   "devices": [{
     "customerId": 3,
     "customerName": null,

@@ -6,7 +6,6 @@ import InventoryStationaryDevices from '../types/InventoryStationaryDevices'
 const DATA: InventoryStationaryDevices = {
   "stationId": 405,
   "stationName": null,
-  "deviceType": "NozzleReader",
   "devices": [{
     "customerId": 3,
     "customerName": null,

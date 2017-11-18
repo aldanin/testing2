@@ -4,7 +4,6 @@ import * as Roseman from './RosemanTypes'
 export default interface InventoryStationaryDevices {
   stationId: Roseman.RosemanID,
   stationName: string,
-  deviceType: string,
   devices: any[],
   totalItems: number,
 }

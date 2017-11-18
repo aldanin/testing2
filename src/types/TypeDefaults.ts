@@ -11,7 +11,6 @@ export const INVENTORY_MAIN_DEFAULT: InventoryMain = {
 export const INVENTORY_DEVICES_DEFAULT: InventoryStationaryDevices = {
   devices: [],
   stationId: 0,
-  deviceType: 'NozzleReader',
   stationName: '',
   totalItems: 0,
 }
